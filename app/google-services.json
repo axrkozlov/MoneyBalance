@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "254560225624",
+    "firebase_url": "https://money-balance-7c263.firebaseio.com",
+    "project_id": "money-balance-7c263",
+    "storage_bucket": "money-balance-7c263.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:254560225624:android:9a0308447f399407",
+        "android_client_info": {
+          "package_name": "com.axfex.moneybalance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "254560225624-2n78oilbij0obifsi43loeef6ep6ff6d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.axfex.moneybalance",
+            "certificate_hash": "8ae90b50e8ed138e5b4f39b2a36401615b7a3623"
+          }
+        },
+        {
+          "client_id": "254560225624-956b05e1mq42a8nhjspd4ssf24d03oce.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIDEMLrbpJbM2kBZOXjkzSCDJi5_iBDzw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "254560225624-956b05e1mq42a8nhjspd4ssf24d03oce.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

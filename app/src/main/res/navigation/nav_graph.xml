@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_money"
+    app:startDestination="@id/fragment_splash">
+    <fragment
+        android:id="@+id/fragment_login"
+        android:name="com.axfex.moneybalance.ui.login.LoginFragment"
+        android:label="login_fragment"
+        tools:layout="@layout/fragment_login">
+
+        <action
+            android:id="@+id/action_fragment_login_to_signUpFragment"
+            app:destination="@id/signUpFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <action
+        android:id="@+id/action_splashFragment_to_fragment_login"
+        app:destination="@id/fragment_login"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim"
+        app:popUpTo="@id/fragment_splash"
+        app:popUpToInclusive="true" />
+    <action
+        android:id="@+id/action_splashFragment_to_fragment_balance"
+        app:destination="@id/fragment_balance"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim"
+        app:popUpTo="@id/fragment_splash"
+        app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/fragment_balance"
+        android:name="com.axfex.moneybalance.ui.BalanceFragment"
+        android:label="fragment_balance"
+        tools:layout="@layout/fragment_balance" />
+
+    <fragment
+        android:id="@+id/fragment_splash"
+        android:name="com.axfex.moneybalance.ui.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash">
+
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.axfex.moneybalance.ui.login.SignUpFragment"
+        android:label="fragment_signup"
+        tools:layout="@layout/fragment_signup" />
+    <!--<action-->
+    <!--android:id="@+id/action_garden_fragment_to_plant_detail_fragment"-->
+    <!--app:destination="@id/detailFragment"-->
+    <!--app:enterAnim="@anim/slide_in_right"-->
+    <!--app:exitAnim="@anim/slide_out_left"-->
+    <!--app:popEnterAnim="@anim/slide_in_left"-->
+    <!--app:popExitAnim="@anim/slide_out_right" />-->
+    <!--<fragment android:id="@+id/detailFragment" android:name="com.axfex.moneybalance.DetailFragment"-->
+    <!--android:label="fragment_detail" tools:layout="@layout/fragment_detail"/>-->
+</navigation>
