@@ -1,12 +1,11 @@
-package com.axfex.moneybalance.ui.login
+package com.axfex.moneybalance.ui.signin
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.axfex.moneybalance.domain.UserManager
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
-import com.axfex.moneybalance.ui.login.SignUpViewModel.SignUpViewState.*
+import com.axfex.moneybalance.ui.signin.SignUpViewModel.SignUpViewState.*
 
 class SignUpViewModel(val userManager: UserManager) : ViewModel(), CoroutineScope {
     val TAG="SignUpViewModel"
@@ -19,20 +18,20 @@ class SignUpViewModel(val userManager: UserManager) : ViewModel(), CoroutineScop
     val state: MutableLiveData<SignUpViewState> = MutableLiveData()
 
     fun login(username: String, password: String) = launch {
-        state.value = SignUpViewLoadingState
-        userManager.signIn(username, password).let {
-            when (it){
-                UserManager.SignInResult.SUCCESSFUL-> {
-                    Log.i(TAG, "login: success")
-                    state.value=SignUpViewIdle
-                }
-                is UserManager.SignInResult.ERROR->{
-                    state.value=SignUpViewWithErrorState(it.errorMessage)
-                }
-            }
-        }
-
-        Log.i("password complete", "login: ")
+//        state.value = SignUpViewLoadingState
+//        userManager.signIn(cre).let {
+//            when (it){
+//                UserManager.SignInResult.SUCCESSFUL-> {
+//                    Log.i(TAG, "signIn: success")
+//                    state.value=SignUpViewIdle
+//                }
+//                is UserManager.SignInResult.ERROR->{
+//                    state.value=SignUpViewWithErrorState(it.errorMessage)
+//                }
+//            }
+//        }
+//
+//        Log.i("password complete", "signIn: ")
 
     }
 

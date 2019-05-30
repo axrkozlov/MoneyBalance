@@ -8,11 +8,17 @@
     <color name="whiteText">#FFF9C4</color>
     <color name="transparent">#00000000</color>
     <color name="loginFieldBorders">#726440</color>
-    <color name="loginField">#383832</color>
+    <color name="loginField">#585850</color>
 
+    <color name="welcomeIndicatorCurrent">#BE1366C5</color>
+    <color name="welcomeIndicator">#C036393D</color>
+    <color name="welcomeIndicatorBorder">#CECBC4</color>
+    <color  name="blur">#4C685D2D</color>
 
     <color name="colorSignUp">#43A047</color>
     <color name="colorGoogle">#4285F4</color>
     <color name="colorFacebook">#4267b2</color>
     <color name="errorLabel">#E53935</color>
+
+
 </resources>

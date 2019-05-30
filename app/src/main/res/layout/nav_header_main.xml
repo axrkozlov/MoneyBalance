@@ -12,8 +12,11 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark"
         android:orientation="vertical"
         android:gravity="bottom">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:orientation="horizontal">
 
-    <ImageView
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/nav_header_vertical_spacing"
@@ -21,6 +24,20 @@
             android:contentDescription="@string/nav_header_desc"
             android:id="@+id/imageView"/>
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Log in"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            app:icon="@drawable/ic_account_circle"/>
+
+    </LinearLayout>
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,5 +50,7 @@
             android:layout_height="wrap_content"
             android:text="@string/nav_header_subtitle"
             android:id="@+id/textView"/>
+
+
 
 </LinearLayout>

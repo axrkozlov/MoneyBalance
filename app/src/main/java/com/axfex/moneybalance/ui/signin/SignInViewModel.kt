@@ -1,16 +1,20 @@
-package com.axfex.moneybalance.ui.login
+package com.axfex.moneybalance.ui.signin
 
-import android.util.Log
+import android.text.TextUtils
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.axfex.moneybalance.domain.UserManager
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
-import com.axfex.moneybalance.ui.login.LoginViewModel.LoginViewState.*
-import com.axfex.moneybalance.ui.login.LoginViewModel.LogoViewState.*
-import com.axfex.moneybalance.ui.login.LoginViewModel.SignModeViewState.*
-class LoginViewModel(val userManager: UserManager) : ViewModel(), CoroutineScope {
-    val TAG="SignUpViewModel"
+import com.axfex.moneybalance.ui.signin.SignInViewModel.LoginViewState.*
+import com.axfex.moneybalance.ui.signin.SignInViewModel.LogoViewState.*
+import com.axfex.moneybalance.ui.signin.SignInViewModel.SignModeViewState.*
+import com.google.firebase.auth.EmailAuthProvider
+import com.google.firebase.auth.FirebaseUser
+
+
+class SignInViewModel(val userManager: UserManager) : ViewModel(), CoroutineScope {
+    val TAG = "SignUpViewModel"
     private val viewModelJob = SupervisorJob()
 
     override val coroutineContext: CoroutineContext
@@ -21,42 +25,52 @@ class LoginViewModel(val userManager: UserManager) : ViewModel(), CoroutineScope
     val logoState: MutableLiveData<LogoViewState> = MutableLiveData()
     val signModeState: MutableLiveData<SignModeViewState> = MutableLiveData()
 
-    fun login(username: String, password: String) = launch {
+    fun signIn(email: String,password: String) = launch {
+        if (checkIsEmpty(email, password)) return@launch
         state.value = LoginViewLoadingState
-        userManager.signIn(username, password).let {
-            when (it){
-                UserManager.SignInResult.SUCCESSFUL-> {
-                    Log.i(TAG, "login: success")
-                    state.value=LoginView
-                }
-                is UserManager.SignInResult.ERROR->{
-                    state.value=LoginViewWithErrorState(it.errorMessage)
-                }
-            }
-        }
-
-        Log.i("password complete", "login: ")
-
-    }
-
-
-
-    fun signUp(email: String, password: String) = launch {
-        state.value = LoginViewLoadingState
-        userManager.signUp(email, password).let {
+        val credentials = EmailAuthProvider.getCredential(email, password)
+        userManager.signIn(credentials).let {
             when (it) {
                 UserManager.SignInResult.SUCCESSFUL -> {
-                    Log.i(TAG, "login: success")
-                    state.value = LoginView
+                    state.value = LoginViewIdle
                 }
                 is UserManager.SignInResult.ERROR -> {
                     state.value = LoginViewWithErrorState(it.errorMessage)
                 }
             }
         }
-
-        Log.i("password complete", "login: ")
     }
+
+    fun signUp(username:String,email: String, password: String) = launch {
+        if (checkIsEmpty(email, password)) return@launch
+        state.value = LoginViewLoadingState
+        userManager.signUp(username,email,password).let {
+            when (it) {
+                UserManager.SignInResult.SUCCESSFUL -> {
+                    state.value = LoginViewIdle
+                }
+                is UserManager.SignInResult.ERROR -> {
+                    state.value = LoginViewWithErrorState(it.errorMessage)
+                }
+            }
+        }
+    }
+
+    private fun checkIsEmpty(email: String, password: String) = run {
+        when {
+            TextUtils.isEmpty(email) -> {
+                state.value=LoginViewEmailRequiredState
+                true
+            }
+            TextUtils.isEmpty(password) -> {
+                state.value=LoginViewPasswordRequiredState
+                true
+            } else -> false
+        }
+    }
+
+
+
 
     fun forgotPassword() {
 
@@ -84,28 +98,30 @@ class LoginViewModel(val userManager: UserManager) : ViewModel(), CoroutineScope
     fun switchToSignUp() {
         if (state.value == LoginViewLoadingState) return
         if (signModeState.value == SignModeViewState.SignUpView) return
-
+        state.value=LoginViewIdle
         signModeState.value = SignModeViewState.SignUpView
     }
 
     fun switchToSignIn() {
         if (state.value == LoginViewLoadingState) return
         if (signModeState.value == SignInView) return
-
+        state.value=LoginViewIdle
         signModeState.value = SignInView
     }
 
 
     sealed class LoginViewState {
-        object LoginView : LoginViewState()
+        object LoginViewIdle : LoginViewState()
         object LoginViewLoadingState : LoginViewState()
-        class LoginViewWithErrorState(val errorMessage:String) : LoginViewState()
+        class LoginViewSignSuccess(val user:FirebaseUser):LoginViewState()
+        object LoginViewEmailRequiredState : LoginViewState()
+        object LoginViewPasswordRequiredState : LoginViewState()
+        class LoginViewWithErrorState(val errorMessage: String) : LoginViewState()
     }
 
     sealed class LogoViewState {
         object LogoBigView : LogoViewState()
         object LogoSmallView : LogoViewState()
-        object NoLogoView:LogoViewState()
     }
 
     sealed class SignModeViewState {
@@ -117,7 +133,6 @@ class LoginViewModel(val userManager: UserManager) : ViewModel(), CoroutineScope
         super.onCleared()
         cancel()
     }
-
 
 
 }

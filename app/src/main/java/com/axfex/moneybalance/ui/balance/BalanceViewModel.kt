@@ -1,4 +1,4 @@
-package com.axfex.moneybalance.ui
+package com.axfex.moneybalance.ui.balance
 
 import androidx.lifecycle.ViewModel;
 

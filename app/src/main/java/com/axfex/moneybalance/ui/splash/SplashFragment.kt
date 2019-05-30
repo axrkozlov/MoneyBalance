@@ -24,8 +24,8 @@ class SplashFragment : Fragment() {
         super.onResume()
         handler.postDelayed({
             when (splashViewModel.currentUser.value){
-                is NotAuthenticated -> findNavController().navigate(R.id.action_splashFragment_to_fragment_login)
-                is AuthenticatedUser -> findNavController().navigate(R.id.action_splashFragment_to_fragment_balance)
+                is NotAuthenticated -> findNavController().navigate(R.id.action_splashFragment_to_welcomeFragment)
+                is Authenticated -> findNavController().navigate(R.id.action_to_balanceFragment)
             }
         },200)
 
