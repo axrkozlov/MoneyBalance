@@ -1,7 +1,7 @@
 package com.axfex.moneybalance.ui.profile
 
 import androidx.lifecycle.ViewModel;
-import com.axfex.moneybalance.domain.UserManager
+import com.axfex.moneybalance.domain.auth.UserManager
 
 class ProfileViewModel(val userManager: UserManager) : ViewModel() {
 

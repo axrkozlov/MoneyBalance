@@ -8,16 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.axfex.moneybalance.R
-import com.axfex.moneybalance.utils.getViewModel
+import com.axfex.moneybalance.core.AppFragment
 import kotlinx.android.synthetic.main.fragment_profile.*
+import javax.inject.Inject
 
-class ProfileFragment : Fragment() {
+class ProfileFragment : AppFragment() {
 
-    companion object {
-        fun newInstance() = ProfileFragment()
-    }
 
-    private lateinit var viewModel: ProfileViewModel
+    @Inject
+    lateinit var viewModel: ProfileViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,7 +27,7 @@ class ProfileFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = getViewModel()
+
         logOut.setOnClickListener { viewModel.logOut() }
         // TODO: Use the ViewModel
     }

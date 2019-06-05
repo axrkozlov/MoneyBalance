@@ -24,16 +24,13 @@ class KeyboardEventListener(
             } else {
                 dispatchKeyboardEvent(isOpen)
                 lastState = isOpen
-                Log.i("KeyboardEventListener", "onGlobalLayout: ")
-                
-
             }
         }
 
     }
 
     init {
-        // Dispatch the current state of the keyboard
+        // Dispatch the current signinState of the keyboard
         dispatchKeyboardEvent(activity.isKeyboardOpen())
         // Make the component lifecycle aware
         activity.lifecycle.addObserver(this)
@@ -42,11 +39,6 @@ class KeyboardEventListener(
 
     private fun registerKeyboardListener() {
         activity.getRootView().viewTreeObserver.addOnGlobalLayoutListener(listener)
-        activity.getRootView().viewTreeObserver.addOnGlobalFocusChangeListener { oldFocus, newFocus ->
-            val isOpen = activity.isKeyboardOpen()
-            Log.i("KeyboardEventListener", "registerKeyboardListener: $oldFocus $newFocus")
-
-        }
     }
 
     private fun dispatchKeyboardEvent(isOpen: Boolean) {
@@ -54,6 +46,12 @@ class KeyboardEventListener(
             isOpen  -> callback(true)
             !isOpen -> callback(false)
         }
+    }
+
+    @OnLifecycleEvent(value = Lifecycle.Event.ON_RESUME)
+    @CallSuper
+    fun onLifecycleResume() {
+        registerKeyboardListener()
     }
 
     @OnLifecycleEvent(value = Lifecycle.Event.ON_PAUSE)

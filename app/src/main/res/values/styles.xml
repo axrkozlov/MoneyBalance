@@ -7,12 +7,29 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@color/backgroundDark</item>
+        <item name="materialButtonStyle">@style/Button.Round</item>
+        <item name="borderlessButtonStyle">@style/Button.Round.TextButton</item>
     </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="buttonStyle">@style/Button.Round</item>
     </style>
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Button.Round" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">100dp</item>
+    </style>
+
+    <style name="Button.Round.TextButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="backgroundTint">@color/transparent</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="cornerRadius">100dp</item>
+        <item name="android:textStyle">italic</item>
+    </style>
 
 </resources>
