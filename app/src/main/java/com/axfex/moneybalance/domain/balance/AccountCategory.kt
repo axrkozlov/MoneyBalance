@@ -2,4 +2,8 @@ package com.axfex.moneybalance.domain.balance
 
 import java.util.*
 
-data class AccountCategory(val id: UUID, val name:String, val imageUrl:String?)
+data class AccountCategory(
+    override val id: String,
+    override val name: String,
+    override val imageUrl: String? = null
+) : Category(id,name,imageUrl)

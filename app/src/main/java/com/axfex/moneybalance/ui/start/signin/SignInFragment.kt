@@ -20,16 +20,9 @@ import com.axfex.moneybalance.utils.*
 import androidx.transition.*
 import com.axfex.moneybalance.R
 import com.axfex.moneybalance.core.AppFragment
-import com.axfex.moneybalance.databinding.FragmentSigninBinding
 import com.google.android.material.textfield.TextInputEditText
 import javax.inject.Inject
 import android.view.ViewGroup
-import androidx.databinding.ViewDataBinding
-import androidx.databinding.OnRebindCallback
-
-
-
-
 
 class SignInFragment : AppFragment() {
 
@@ -40,27 +33,9 @@ class SignInFragment : AppFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentSigninBinding.inflate(inflater, container, false)
-
-//        binding.addOnRebindCallback(object : OnRebindCallback() {
-//            override fun onPreBind(binding: ViewDataBinding?): Boolean {
-//                TransitionManager.beginDelayedTransition(
-//                    binding!!.root as ViewGroup
-//                )
-//                return super.onPreBind(binding)
-//            }
-//        })
-//
-        binding.viewModel=viewModel
-        binding.addOnRebindCallback(object : OnRebindCallback<ViewDataBinding>(){
-            override fun onPreBind(binding: ViewDataBinding?): Boolean {
-                Log.i("SignInFragment", "onPreBind: ")
-                return super.onPreBind(binding)
-            }
-        })
-
-        return binding.root
-//        return inflater.inflate(R.layout.fragment_signin, container, false)
+//        val binding = FragmentSigninBinding.inflate(inflater, container, false)
+//        return binding.root
+        return inflater.inflate(R.layout.fragment_signin, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -68,7 +43,7 @@ class SignInFragment : AppFragment() {
         setupListeners()
     }
 
-    fun setupListeners(){
+    fun setupListeners() {
         toSignUp.setOnClickListener { viewModel.switchToSignUp() }
         toSignIn.setOnClickListener { viewModel.switchToSignIn() }
         username.setOnFocusChangeListener(this::focusChanged)
@@ -77,7 +52,9 @@ class SignInFragment : AppFragment() {
         background.setOnFocusChangeListener(this::focusChanged)
 
         password.setOnEditorActionListener { _: TextView?, i: Int, _: KeyEvent? ->
-            if (i == EditorInfo.IME_ACTION_DONE) { signIn.callOnClick() }
+            if (i == EditorInfo.IME_ACTION_DONE) {
+                signIn.callOnClick()
+            }
             false
         }
 
@@ -117,7 +94,6 @@ class SignInFragment : AppFragment() {
                 }
             }
         }
-
 
 
     }

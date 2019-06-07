@@ -1,6 +1,9 @@
 package com.axfex.moneybalance.data.source.remote
 
-class RemoteDataSource {
+import android.content.Context
+import com.axfex.moneybalance.data.source.OperationsDataSource
+
+class RemoteDataSource(context: Context):OperationsDataSource {
 
 
 

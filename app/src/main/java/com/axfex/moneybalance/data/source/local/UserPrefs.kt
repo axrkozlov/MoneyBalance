@@ -1,4 +1,4 @@
-package com.axfex.moneybalance.domain
+package com.axfex.moneybalance.data.source.local
 
 import android.content.Context
 import android.content.SharedPreferences

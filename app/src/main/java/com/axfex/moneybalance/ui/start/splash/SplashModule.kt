@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.axfex.moneybalance.di.ViewModelKey
-import com.axfex.moneybalance.domain.UserPrefs
+import com.axfex.moneybalance.data.source.local.UserPrefs
 import dagger.Module
 import dagger.Provides
 import dagger.android.ContributesAndroidInjector

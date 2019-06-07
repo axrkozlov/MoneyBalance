@@ -25,7 +25,6 @@ class App:Application(), HasSupportFragmentInjector {
             .context(this)
             .build()
         component.inject(this)
-
     }
 
 }

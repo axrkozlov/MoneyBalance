@@ -29,7 +29,6 @@ class ProfileFragment : AppFragment() {
         super.onActivityCreated(savedInstanceState)
 
         logOut.setOnClickListener { viewModel.logOut() }
-        // TODO: Use the ViewModel
     }
 
 }

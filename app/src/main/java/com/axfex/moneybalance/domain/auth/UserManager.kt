@@ -1,14 +1,11 @@
 package com.axfex.moneybalance.domain.auth
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.axfex.moneybalance.domain.UserPrefs
+import com.axfex.moneybalance.data.source.local.UserPrefs
 import com.axfex.moneybalance.domain.auth.User.*
 import com.google.firebase.auth.*
 import java.util.*
-import kotlin.collections.HashMap
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
