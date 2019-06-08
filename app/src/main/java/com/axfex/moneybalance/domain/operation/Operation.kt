@@ -1,8 +1,11 @@
-package com.axfex.moneybalance.domain.balance
+package com.axfex.moneybalance.domain.operation
 
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.axfex.moneybalance.domain.account.Account
+import com.axfex.moneybalance.domain.category.Category
+import com.axfex.moneybalance.domain.currency.Currency
 import java.util.*
 
 @Entity

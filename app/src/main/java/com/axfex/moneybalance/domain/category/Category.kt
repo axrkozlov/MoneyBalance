@@ -1,11 +1,9 @@
-package com.axfex.moneybalance.domain.balance
+package com.axfex.moneybalance.domain.category
 
-import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*
 
-@Entity
-abstract class Currency (
+abstract class Category(
     @PrimaryKey
     open val id: String= UUID.randomUUID().toString(),
     open val name:String,

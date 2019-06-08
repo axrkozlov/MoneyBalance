@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.axfex.moneybalance.core.AppViewModelFactory
 import com.axfex.moneybalance.ui.balance.BalanceModule
+import com.axfex.moneybalance.ui.category.CategoryEditModule
+import com.axfex.moneybalance.ui.category.dialog.CategoryDialogModule
 import com.axfex.moneybalance.ui.profile.ProfileModule
 import com.axfex.moneybalance.ui.start.ready.ReadyModule
 import com.axfex.moneybalance.ui.start.signin.SignInModule
@@ -21,7 +23,9 @@ import javax.inject.Provider
         WelcomeModule::class,
         ReadyModule::class,
         BalanceModule::class,
-        ProfileModule::class
+        ProfileModule::class,
+        CategoryEditModule::class,
+        CategoryDialogModule::class
 
     ]
 )

@@ -10,6 +10,31 @@
         <item name="materialButtonStyle">@style/Button.Round</item>
         <item name="borderlessButtonStyle">@style/Button.Round.TextButton</item>
     </style>
+    <!--<style name="ChoiseDialog" parent="Base.Theme.MaterialComponents.Dialog">-->
+
+
+    <!--<style name="ChoiseDialog" parent="Theme.MaterialComponents.BottomSheetDialog">-->
+    <style name="ChoiseDialog" parent="Theme.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheet.Modal</item>
+        <item name="colorBackgroundFloating">@color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:backgroundDimAmount">0.1</item>
+
+    </style>
+    <style name="BottomSheet.Modal" parent="Widget.Design.BottomSheet.Modal">
+        <item name="behavior_peekHeight">200dp</item>
+        <item name="behavior_hideable">false</item>
+        <item name="behavior_skipCollapsed">true</item>
+    </style>
+
+    <style name="CustomDialogTheme" parent="android:Theme.Material.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>

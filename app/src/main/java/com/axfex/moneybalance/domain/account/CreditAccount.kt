@@ -1,5 +1,8 @@
-package com.axfex.moneybalance.domain.balance
+package com.axfex.moneybalance.domain.account
 
+import com.axfex.moneybalance.domain.category.AccountCategory
+import com.axfex.moneybalance.domain.operation.Amount
+import com.axfex.moneybalance.domain.currency.Currency
 import java.util.*
 import kotlin.collections.HashSet
 

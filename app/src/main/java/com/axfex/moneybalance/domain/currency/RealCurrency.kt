@@ -1,7 +1,5 @@
-package com.axfex.moneybalance.domain.balance
+package com.axfex.moneybalance.domain.currency
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
 import java.util.*
 
 data class RealCurrency (
@@ -11,4 +9,4 @@ data class RealCurrency (
     val iso: String,
     override val imageUrl:String?=null
 
-):Currency(id,name,imageUrl)
+): Currency(id,name,imageUrl)

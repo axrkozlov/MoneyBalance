@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/blur"
+        android:src="@drawable/start_panel_background"
         android:clickable="true"
         android:focusable="true"
         android:focusableInTouchMode="true"

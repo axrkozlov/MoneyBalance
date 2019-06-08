@@ -1,18 +1,17 @@
 package com.axfex.moneybalance.utils.remove
 
-import android.app.Application
-import android.content.Context
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import com.axfex.moneybalance.domain.start.StartManager
-import com.axfex.moneybalance.domain.auth.UserManager
-import com.axfex.moneybalance.ui.profile.ProfileViewModel
-import com.axfex.moneybalance.ui.balance.BalanceViewModel
-import com.axfex.moneybalance.ui.start.signin.SignInViewModel
-import com.axfex.moneybalance.ui.start.signin.ReadyViewModel
-import com.axfex.moneybalance.ui.start.splash.SplashViewModel
-import com.axfex.moneybalance.ui.start.welcome.WelcomeViewModel
-
+//import android.app.Application
+//import android.content.Context
+//import androidx.lifecycle.ViewModel
+//import androidx.lifecycle.ViewModelProvider
+//import com.axfex.moneybalance.domain.auth.UserManager
+//import com.axfex.moneybalance.ui.profile.ProfileViewModel
+//import com.axfex.moneybalance.ui.balance.BalanceViewModel
+//import com.axfex.moneybalance.ui.start.signin.SignInViewModel
+//import com.axfex.moneybalance.ui.start.signin.ReadyViewModel
+//import com.axfex.moneybalance.ui.start.splash.SplashViewModel
+//import com.axfex.moneybalance.ui.start.welcome.WelcomeViewModel
+//
 
 //@Suppress("UNCHECKED_CAST")
 //class ViewModelFactory(application: Application) : ViewModelProvider.Factory {

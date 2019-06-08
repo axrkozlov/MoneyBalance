@@ -11,9 +11,11 @@ import androidx.lifecycle.OnLifecycleEvent
 
 class KeyboardEventListener(
     private val activity: FragmentActivity,
+    private val lifecycle: Lifecycle,
     private val callback: (isOpen: Boolean) -> Unit
 ) : LifecycleObserver {
 
+    var registered=false
 
     private val listener = object : ViewTreeObserver.OnGlobalLayoutListener {
         private var lastState: Boolean = activity.isKeyboardOpen()
@@ -33,12 +35,8 @@ class KeyboardEventListener(
         // Dispatch the current signinState of the keyboard
         dispatchKeyboardEvent(activity.isKeyboardOpen())
         // Make the component lifecycle aware
-        activity.lifecycle.addObserver(this)
+        lifecycle.addObserver(this)
         registerKeyboardListener()
-    }
-
-    private fun registerKeyboardListener() {
-        activity.getRootView().viewTreeObserver.addOnGlobalLayoutListener(listener)
     }
 
     private fun dispatchKeyboardEvent(isOpen: Boolean) {
@@ -60,7 +58,15 @@ class KeyboardEventListener(
         unregisterKeyboardListener()
     }
 
+    private fun registerKeyboardListener() {
+        if (registered) return
+        activity.getRootView().viewTreeObserver.addOnGlobalLayoutListener(listener)
+        registered=true
+    }
+
     private fun unregisterKeyboardListener() {
+        if (!registered) return
         activity.getRootView().viewTreeObserver.removeOnGlobalLayoutListener(listener)
+        registered=false
     }
 }

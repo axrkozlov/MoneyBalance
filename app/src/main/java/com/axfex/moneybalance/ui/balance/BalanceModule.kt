@@ -9,16 +9,20 @@ import dagger.Module
 import dagger.Provides
 import dagger.android.ContributesAndroidInjector
 import dagger.multibindings.IntoMap
-import kotlin.reflect.KClass
 
 
-@Module(includes = [
-    BalanceModule.ProvideViewModel::class
-])
+@Module(
+    includes = [
+        BalanceModule.ProvideViewModel::class
+    ]
+)
 abstract class BalanceModule {
 
 
-    @ContributesAndroidInjector(modules = [InjectViewModel::class])
+    @ContributesAndroidInjector(
+        modules = [InjectViewModel::class,
+            BalanceModule.InjectAdapter::class]
+    )
     abstract fun bind(): BalanceFragment
 
     @Module
@@ -37,4 +41,12 @@ abstract class BalanceModule {
             ViewModelProviders.of(target, factory).get(BalanceViewModel::class.java)
     }
 
+    @Module
+    class InjectAdapter {
+
+        @Provides
+        fun provideAdapter() = BalanceAdapter()
+
+
+    }
 }

@@ -1,9 +1,6 @@
-package com.axfex.moneybalance.domain.balance
+package com.axfex.moneybalance.domain.category
 
-import java.util.*
-
-
-class ExpenseCategory(
+data class AccountCategory(
     override val id: String,
     override val name: String,
     override val imageUrl: String? = null

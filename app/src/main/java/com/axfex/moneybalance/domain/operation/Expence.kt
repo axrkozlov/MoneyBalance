@@ -1,5 +1,8 @@
-package com.axfex.moneybalance.domain.balance
+package com.axfex.moneybalance.domain.operation
 
+import com.axfex.moneybalance.domain.account.Account
+import com.axfex.moneybalance.domain.category.ExpenseCategory
+import com.axfex.moneybalance.domain.currency.Currency
 import java.util.*
 
 data class Expence(

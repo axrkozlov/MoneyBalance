@@ -20,7 +20,6 @@ fun Context.convertDpToPx(dp: Float): Float {
     )
 }
 fun Activity.isKeyboardOpen(): Boolean {
-    
     val visibleBounds = Rect()
     this.getRootView().getWindowVisibleDisplayFrame(visibleBounds)
     val heightDiff = getRootView().height - visibleBounds.height()
@@ -32,6 +31,6 @@ fun Activity.isKeyboardClosed(): Boolean {
     return !this.isKeyboardOpen()
 }
 
-fun Fragment.addKeybaordEventListener(callback: (isOpen: Boolean) -> Unit) {
-    KeyboardEventListener(requireActivity(),callback)
-}
+fun Fragment.addKeyboardEventListener(callback: (isOpen: Boolean) -> Unit) = KeyboardEventListener(requireActivity(), lifecycle, callback)
+
+

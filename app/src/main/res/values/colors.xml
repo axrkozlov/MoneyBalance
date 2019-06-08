@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#283593</color>
     <color name="colorAccent">#FFA726</color>
     <color name="colorLessAccent">#FFE082</color>
-    <color name="backgroundDark">#44443D</color>
+    <color name="backgroundDark">#373A41</color>
     <color name="whiteText">#FFF9C4</color>
     <color name="transparent">#00000000</color>
     <color name="loginFieldBorders">#726440</color>
@@ -20,5 +20,5 @@
     <color name="colorFacebook">#4267b2</color>
     <color name="errorLabel">#E53935</color>
 
-
+<color name="bottomDialogSearchBottom">#000000</color>
 </resources>

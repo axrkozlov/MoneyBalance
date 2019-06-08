@@ -1,9 +1,11 @@
-package com.axfex.moneybalance.domain.balance
+package com.axfex.moneybalance.domain.operation
 
-import androidx.room.Entity
+import com.axfex.moneybalance.domain.account.Account
+import com.axfex.moneybalance.domain.category.IncomeCategory
+import com.axfex.moneybalance.domain.currency.Currency
 import java.util.*
 
-@Entity
+
 data class Income(
     override val id: String,
     override val account: Account,

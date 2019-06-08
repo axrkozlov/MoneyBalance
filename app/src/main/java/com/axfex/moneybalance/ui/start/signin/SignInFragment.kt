@@ -2,7 +2,6 @@ package com.axfex.moneybalance.ui.start.signin
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.view.animation.LinearInterpolator
 import com.axfex.moneybalance.ui.start.signin.SignInViewModel.SigninViewState
@@ -83,7 +82,7 @@ class SignInFragment : AppFragment() {
             )
         }
 
-        addKeybaordEventListener { isOpen ->
+        addKeyboardEventListener { isOpen ->
             if (isOpen) {
                 view?.post {
                     viewModel.beginTyping()
