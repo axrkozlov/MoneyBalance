@@ -10,17 +10,16 @@
     android:orientation="vertical"
     tools:context=".ui.category.dialog.CategoryDialogFragment">
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/categoryDialogList"
         android:layout_width="match_parent"
         android:layout_height="350dp"
-        android:layout_marginTop="8dp"
         android:orientation="vertical"
         android:requiresFadingEdge="horizontal|vertical"
-        android:scrollbarStyle="outsideInset"
         android:scrollbars="vertical"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="3"
+        app:spanCount="4"
         tools:itemCount="30"
         tools:listitem="@layout/fragment_category_dialog_item">
 
@@ -34,29 +33,34 @@
         android:gravity="end"
         android:orientation="horizontal">
 
-        <ImageButton
-
-            android:id="@+id/editCategory"
+        <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginStart="8dp"
             android:layout_marginBottom="4dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="8dp"
-            android:padding="8dp"
-            android:background="@drawable/bottom_dialog_search_background"
-           android:src="@drawable/ic_settings_24dp" />
+            android:background="@drawable/bottom_dialog_search_background">
+
+            <ImageButton
+                android:id="@+id/settingsCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="5dp"
+                android:src="@drawable/ic_settings_24dp" />
+        </FrameLayout>
 
         <FrameLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp">
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_weight="1">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="4dp"
-                android:paddingTop="4dp"
+                android:layout_marginBottom="8dp"
                 android:src="@drawable/bottom_dialog_search_background" />
 
             <com.google.android.material.textfield.TextInputEditText
@@ -64,7 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="6dp"
                 android:layout_marginEnd="6dp"
                 android:background="@color/transparent"
                 android:drawableStart="@drawable/ic_search_24dp"
@@ -73,7 +77,24 @@
                 android:paddingBottom="12dp" />
 
         </FrameLayout>
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/bottom_dialog_search_background">
+
+            <ImageButton
+                android:id="@+id/plusCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="5dp"
+                android:src="@drawable/ic_add_24dp" />
+        </FrameLayout>
 
 
     </LinearLayout>
+
 </LinearLayout>

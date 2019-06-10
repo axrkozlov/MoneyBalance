@@ -1,21 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.balance.BalanceFragment">
+    android:orientation="vertical"
+    tools:context=".ui.balance.BalanceFragment"
+    android:background="@drawable/operations_summary_bg">
 
 
-    <Button
-        android:id="@+id/showDialog"
-        android:layout_width="214dp"
-        android:layout_height="54dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/background"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line1" />
+
+        <ImageView
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/operations_summary_bg_line"
+            app:layout_constraintBottom_toTopOf="@id/balanceTotal" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/operations"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+
+            android:requiresFadingEdge="horizontal|vertical"
+            android:scrollbars="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/fragment_balance_expense_item"/>
+
+        <ImageButton
+            android:id="@+id/addIncome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/operations_add_income"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toBottomOf="@id/line1"
+            app:layout_constraintEnd_toEndOf="@+id/incomeTotal"
+            app:layout_constraintStart_toStartOf="@+id/incomeTotal"
+            app:layout_constraintTop_toTopOf="@id/line1" />
+
+        <ImageButton
+            android:id="@+id/addExpense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/operations_add_expense"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toBottomOf="@+id/line1"
+
+            app:layout_constraintEnd_toEndOf="@+id/expenseTotal"
+            app:layout_constraintStart_toStartOf="@+id/expenseTotal"
+            app:layout_constraintTop_toBottomOf="@+id/line1" />
+
+
+        <TextView
+            android:id="@+id/incomeTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/operations_summary_income_bg"
+            android:text="450.000$"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/balanceTotal"
+            app:layout_constraintEnd_toStartOf="@+id/balanceTotal"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/balanceTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/operations_summary_balance_bg"
+            android:text="+2.254т"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/expenseTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/operations_summary_expense_bg"
+            android:text="4.700"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/balanceTotal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/balanceTotal" />
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
