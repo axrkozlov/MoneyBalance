@@ -18,8 +18,8 @@
         <!--android:layout_height="32dp"-->
         <!--android:layout_marginTop="208dp"-->
         <!--android:layout_marginEnd="28dp"-->
-        <!--android:background="@drawable/ic_mock_bg"-->
-        <!--android:src="@drawable/ic_mock_24dp"-->
+        <!--android:background="@image/balance_expence_item_category_icon_bg"-->
+        <!--android:src="@image/ic_mock_24dp"-->
         <!--app:layout_constraintEnd_toEndOf="parent"-->
         <!--app:layout_constraintTop_toTopOf="parent" />-->
 
@@ -29,7 +29,7 @@
         <!--android:layout_height="32dp"-->
         <!--android:layout_marginTop="208dp"-->
         <!--android:layout_marginEnd="28dp"-->
-        <!--android:background="@drawable/ic_mock_bg2"-->
+        <!--android:background="@image/balance_expence_item_amount_frame"-->
 
         <!--app:layout_constraintEnd_toEndOf="parent"-->
         <!--app:layout_constraintTop_toTopOf="parent" />-->
@@ -40,8 +40,8 @@
         <!--android:layout_height="wrap_content"-->
         <!--android:layout_marginTop="224dp"-->
         <!--android:layout_marginEnd="124dp"-->
-        <!--android:background="@drawable/ic_mock_bg"-->
-        <!--android:src="@drawable/ic_mock_line"-->
+        <!--android:background="@image/balance_expence_item_category_icon_bg"-->
+        <!--android:src="@image/balance_expence_item_line"-->
         <!--app:layout_constraintEnd_toEndOf="parent"-->
         <!--app:layout_constraintTop_toTopOf="parent" />-->
 
@@ -94,8 +94,8 @@
         <!--android:layout_width="32dp"-->
         <!--android:layout_height="32dp"-->
         <!--android:layout_marginEnd="340dp"-->
-        <!--android:background="@drawable/ic_mock_bg"-->
-        <!--android:src="@drawable/ic_mock_24dp"-->
+        <!--android:background="@image/balance_expence_item_category_icon_bg"-->
+        <!--android:src="@image/ic_mock_24dp"-->
         <!--app:layout_constraintEnd_toEndOf="parent"-->
         <!--tools:layout_editor_absoluteY="133dp" />-->
 
@@ -105,7 +105,7 @@
         <!--android:layout_height="33dp"-->
         <!--android:layout_marginTop="132dp"-->
         <!--android:layout_marginEnd="276dp"-->
-        <!--android:background="@drawable/ic_mock_bg2"-->
+        <!--android:background="@image/balance_expence_item_amount_frame"-->
 
         <!--app:layout_constraintEnd_toEndOf="parent"-->
         <!--app:layout_constraintTop_toTopOf="parent" />-->
@@ -115,8 +115,8 @@
         <!--android:layout_width="248dp"-->
         <!--android:layout_height="wrap_content"-->
         <!--android:layout_marginEnd="28dp"-->
-        <!--android:background="@drawable/ic_mock_bg"-->
-        <!--android:src="@drawable/operations_summary_bg_line"-->
+        <!--android:background="@image/balance_expence_item_category_icon_bg"-->
+        <!--android:src="@image/balance_summary_line"-->
         <!--app:layout_constraintEnd_toEndOf="parent"-->
         <!--tools:layout_editor_absoluteY="148dp" />-->
 

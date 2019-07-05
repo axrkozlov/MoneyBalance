@@ -35,7 +35,7 @@ class SplashFragment : AppFragment() {
 //                is NotAuthenticated -> findNavController().navigate(R.id.action_splashFragment_to_welcomeFragment)
 //                is Authenticated -> findNavController().navigate(R.id.action_to_balanceFragment)
 //            }
-        },20)
+        },200)
 
     }
 

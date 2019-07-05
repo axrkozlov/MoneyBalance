@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.main, menu)
+//        menuInflater.inflate(R.menu.main, menu)
 //        login.setOnClickListener {
 //            navController.navigate(R.id.action_to_fragmentSignIn)
 //            val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)

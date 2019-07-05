@@ -37,18 +37,23 @@ class CategoryDialogFragment : AppChoiseDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         settingsCategory.setOnClickListener {
-            findNavController().navigate(R.id.action_to_categoryEditFragment)
-
+            dismiss()
+            findNavController().navigate(R.id.action_to_categoryListFragment)
         }
 
+
+        addCategory.setOnClickListener {
+            dismiss()
+            findNavController().navigate(R.id.action_to_editCategoryFragment)
+        }
 
         searchCategory.setOnFocusChangeListener { _, _ ->
-            val lp1 = LinearLayout.LayoutParams(categoryDialogList.layoutParams)
+            val lp1 = LinearLayout.LayoutParams(categoryDialogRecycler.layoutParams)
             lp1.height = 0
-            categoryDialogList.layoutParams = lp1
+            categoryDialogRecycler.layoutParams = lp1
         }
 
-        categoryDialogList.adapter = adapter
+        categoryDialogRecycler.adapter = adapter
         addKeyboardEventListener { isOpen ->
             val endHeight: Int
             if (isOpen) {
@@ -59,19 +64,18 @@ class CategoryDialogFragment : AppChoiseDialogFragment() {
             }
 
             animationHandler.postDelayed({
-                val lp = LinearLayout.LayoutParams(categoryDialogList.layoutParams)
+                val lp = LinearLayout.LayoutParams(categoryDialogRecycler.layoutParams)
                 animator?.cancel()
                 animator = ValueAnimator.ofInt(lp.height, endHeight)
                 animator?.let {
                     it.addUpdateListener { animation ->
                         lp.height = animation.animatedValue as Int
-                        categoryDialogList.layoutParams = lp
+                        categoryDialogRecycler.layoutParams = lp
                     }
                     it.duration = 150
                     it.startDelay = 50L
                     it.start()
                 }
-
 
             }, 50)
         }

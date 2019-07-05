@@ -1,105 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="2dp"
-    tools:context=".ui.balance.BalanceFragment">
-
-    <ImageView
-        android:id="@+id/imageView18"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
+    android:layout_height="wrap_content" android:layout_width="match_parent"
+    android:background="?attr/selectableItemBackground">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:padding="8dp"
         android:background="#98495BB3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:context=".ui.balance.BalanceFragment">
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:background="@drawable/ic_mock_bg"
-        android:src="@android:drawable/ic_menu_view"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView16"
-        app:layout_constraintEnd_toEndOf="@+id/imageView16"
-        app:layout_constraintTop_toTopOf="@+id/imageView16"
-        app:layout_constraintVertical_bias="0.0" />
+        <ImageView
+            android:id="@+id/categoryIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/balance_expence_item_category_icon_bg"
+            android:src="@android:drawable/ic_menu_view"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView16"
-        android:layout_width="96dp"
-        android:layout_height="32dp"
-        android:layout_marginEnd="28dp"
-        android:background="@drawable/ic_mock_bg2"
+        <ImageView
+            android:id="@+id/amountFrame"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/balance_expence_item_amount_frame"
+            app:layout_constraintBottom_toBottomOf="@+id/amount"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/amount"
+            app:layout_constraintTop_toTopOf="@+id/amount" />
 
-        app:layout_constraintBottom_toBottomOf="@+id/imageView18"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView18" />
-
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="22dp"
-        android:layout_height="12dp"
-
-        android:background="@drawable/ic_mock_bg3"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView18"
-        app:layout_constraintEnd_toStartOf="@+id/imageView5"
-        app:layout_constraintTop_toTopOf="@+id/imageView18" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="238dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ic_mock_bg"
-        android:src="@drawable/ic_mock_line"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView18"
-        app:layout_constraintEnd_toStartOf="@+id/imageView16"
-        app:layout_constraintTop_toTopOf="@+id/imageView18" />
+        <TextView
+            android:id="@+id/amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:padding="8dp"
+            android:text="125.000"
+            android:textColor="#FB4343"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/lineContent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/lineContent"
+            app:layout_constraintVertical_bias="0.472" />
 
 
-    <TextView
-        android:id="@+id/category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        <!--<ImageView-->
+            <!--android:id="@+id/bindHole"-->
+            <!--android:layout_width="22dp"-->
+            <!--android:layout_height="12dp"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--android:background="@image/bind_hole"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+        <ImageView
+            android:id="@+id/lineContent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/balance_expence_item_category_icon_bg"
+            android:src="@drawable/balance_expence_item_line"
+            app:layout_constraintBottom_toBottomOf="@+id/categoryIcon"
+            app:layout_constraintEnd_toStartOf="@+id/amountFrame"
+            app:layout_constraintStart_toEndOf="@+id/categoryIcon"
+            app:layout_constraintTop_toTopOf="@+id/categoryIcon" />
 
 
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="8dp"
-        android:text="Electronic and Devices"
-        android:textColor="#B6A6A6"
-        android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView5"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        <TextView
+            android:id="@+id/categoryLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Electronic and Devices"
+            android:textColor="#B6A6A6"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/lineContent"
+            app:layout_constraintHorizontal_bias="0.065"
+            app:layout_constraintStart_toStartOf="@+id/lineContent"
+            app:layout_constraintTop_toBottomOf="@+id/lineContent" />
 
-    <TextView
-        android:id="@+id/note"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        <TextView
+            android:id="@+id/note"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Notebook"
+            android:textColor="#F6E8E8"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/lineContent"
+            app:layout_constraintEnd_toEndOf="@+id/lineContent"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintStart_toStartOf="@+id/lineContent" />
 
 
-        android:layout_marginEnd="8dp"
-        android:text="Notebook"
-        android:textColor="#F6E8E8"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView5"
-        app:layout_constraintEnd_toEndOf="@+id/imageView5" />
 
-    <TextView
-        android:id="@+id/expenseTotal15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="4.700"
-        android:textColor="#FB4343"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView16"
-        app:layout_constraintEnd_toStartOf="@+id/imageView4"
-        app:layout_constraintStart_toStartOf="@+id/imageView16"
-        app:layout_constraintTop_toTopOf="@+id/imageView16" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

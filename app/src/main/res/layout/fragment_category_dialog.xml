@@ -6,13 +6,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bottom_dialog_background"
+    android:background="@drawable/category_dialog_background"
     android:orientation="vertical"
     tools:context=".ui.category.dialog.CategoryDialogFragment">
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/categoryDialogList"
+        android:id="@+id/categoryDialogRecycler"
         android:layout_width="match_parent"
         android:layout_height="350dp"
         android:orientation="vertical"
@@ -39,7 +39,7 @@
             android:layout_marginEnd="4dp"
             android:layout_marginStart="8dp"
             android:layout_marginBottom="4dp"
-            android:background="@drawable/bottom_dialog_search_background">
+            android:background="@drawable/category_dialog_search_background">
 
             <ImageButton
                 android:id="@+id/settingsCategory"
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:padding="5dp"
-                android:src="@drawable/ic_settings_24dp" />
+                android:src="@drawable/zic_settings_24dp" />
         </FrameLayout>
 
         <FrameLayout
@@ -61,7 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="8dp"
-                android:src="@drawable/bottom_dialog_search_background" />
+                android:src="@drawable/category_dialog_search_background" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/searchCategory"
@@ -71,7 +71,7 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="6dp"
                 android:background="@color/transparent"
-                android:drawableStart="@drawable/ic_search_24dp"
+                android:drawableStart="@drawable/category_dialog_search_icon"
                 android:gravity="bottom"
                 android:inputType="text"
                 android:paddingBottom="12dp" />
@@ -83,15 +83,15 @@
             android:layout_marginStart="4dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="4dp"
-            android:background="@drawable/bottom_dialog_search_background">
+            android:background="@drawable/category_dialog_search_background">
 
             <ImageButton
-                android:id="@+id/plusCategory"
+                android:id="@+id/addCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:padding="5dp"
-                android:src="@drawable/ic_add_24dp" />
+                android:src="@drawable/category_dialog_add" />
         </FrameLayout>
 
 

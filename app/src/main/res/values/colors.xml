@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#1565C0</color>
+    <color name="colorPrimary">#BA1565C0</color>
     <color name="colorPrimaryDark">#283593</color>
     <color name="colorAccent">#FFA726</color>
     <color name="colorLessAccent">#FFE082</color>
@@ -21,4 +21,34 @@
     <color name="errorLabel">#E53935</color>
 
 <color name="bottomDialogSearchBottom">#000000</color>
+
+    <!--stored in db entity by name, so don't change names-->
+    <color name="gray">#666666</color>
+    <color name="bright_pink">#FF007F</color>
+    <color name="red">#FF0000</color>
+    <color name="orange">#FF7F00</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="chartreuse">#7FFF00</color>
+    <color name="green">#00FF00</color>
+    <color name="spring_green">#00FF7F</color>
+    <color name="cyan">#00FFFF</color>
+    <color name="azure">#007FFF</color>
+    <color name="blue">#0000FF</color>
+    <color name="violet">#7F00FF</color>
+    <color name="magenta">#FF00FF</color>
+
+    <array name="iconColors">
+        <item>@color/bright_pink</item>
+        <item>@color/red</item>
+        <item>@color/orange</item>
+        <item>@color/yellow</item>
+        <item>@color/chartreuse</item>
+        <item>@color/green</item>
+        <item>@color/spring_green</item>
+        <item>@color/cyan</item>
+        <item>@color/azure</item>
+        <item>@color/blue</item>
+        <item>@color/violet</item>
+        <item>@color/magenta</item>
+    </array>
 </resources>

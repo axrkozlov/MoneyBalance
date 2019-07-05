@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.axfex.moneybalance.R
 import com.axfex.moneybalance.core.AppFragment
 import kotlinx.android.synthetic.main.fragment_balance.*
@@ -36,7 +37,15 @@ class BalanceFragment : AppFragment() {
 //            findNavController().navigate(R.id.action_show_categoryDialog)
 //        }
 
+        findNavController().navigate(R.id.action_to_editCategoryFragment)
 
+        addExpense.setOnClickListener{
+            findNavController().navigate(R.id.action_to_addOperationFragment)
+        }
+
+        addIncome.setOnClickListener{
+            findNavController().navigate(R.id.action_to_addOperationFragment)
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

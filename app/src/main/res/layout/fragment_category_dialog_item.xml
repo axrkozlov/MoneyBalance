@@ -11,14 +11,14 @@
      android:layout_weight="1">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/categoryIcon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:src="@android:drawable/ic_menu_view" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/categoryUsage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"

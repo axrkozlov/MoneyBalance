@@ -35,19 +35,50 @@
         app:exitAnim="@anim/nav_default_exit_anim"
         app:popEnterAnim="@anim/nav_default_pop_enter_anim"
         app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
     <action
-        android:id="@+id/action_to_categoryEditFragment"
-        app:destination="@+id/categoryEditFragment"
+        android:id="@+id/action_to_addOperationFragment"
+        app:destination="@+id/addOperationFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+    <action
+        android:id="@+id/action_to_categoryListFragment"
+        app:destination="@+id/categoryListFragment"
         app:enterAnim="@anim/slide_in_right"
         app:exitAnim="@anim/slide_out_left"
         app:popEnterAnim="@anim/slide_in_left"
         app:popExitAnim="@anim/slide_out_right"
         app:popUpTo="@id/categoryDialogFragment"
-        app:popUpToInclusive="true" />
+        app:popUpToInclusive="true"/>
 
     <fragment
-        android:id="@+id/categoryEditFragment"
-        android:name="com.axfex.moneybalance.ui.category.CategoryEditFragment"
-        android:label="fragment_category_edit"
-        tools:layout="@layout/fragment_category_edit" />
+        android:id="@+id/editCategoryFragment"
+        android:name="com.axfex.moneybalance.ui.category.edit.EditCategoryFragment"
+        android:label="edit category"
+        tools:layout="@layout/fragment_edit_category" />
+    <fragment
+        android:id="@+id/addOperationFragment"
+        android:name="com.axfex.moneybalance.ui.add_operation.AddOperationFragment"
+        android:label="@string/addOperationFragmentLabel"
+        tools:layout="@layout/fragment_add_operation" />
+    <fragment
+        android:id="@+id/categoryListFragment"
+        android:name="com.axfex.moneybalance.ui.category.list.CategoryListFragment"
+        android:label="fragment_category_list"
+        tools:layout="@layout/fragment_category_list" >
+
+    </fragment>
+    <action
+        android:id="@+id/action_to_editCategoryFragment"
+        app:destination="@id/editCategoryFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right"
+        app:popUpTo="@id/categoryDialogFragment"
+        app:popUpToInclusive="true"
+        />
 </navigation>

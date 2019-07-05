@@ -8,49 +8,122 @@
     android:orientation="vertical">
 
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="118dp" />
+    <!--<androidx.constraintlayout.widget.Guideline-->
+    <!--android:id="@+id/guideline"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--app:layout_constraintGuide_begin="118dp" />-->
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="606dp" />
+    <!--<androidx.constraintlayout.widget.Guideline-->
+    <!--android:id="@+id/guideline3"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--app:layout_constraintGuide_begin="606dp" />-->
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintTop_toTopOf="@+id/guideline"
-        app:layout_constraintVertical_bias="0.0"
-        app:layout_constraintVertical_chainStyle="packed"
-        tools:layout_editor_absoluteX="141dp" />
+    <!--<Button-->
+    <!--android:id="@+id/button"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="8dp"-->
+    <!--android:text="Button"-->
+    <!--app:layout_constraintBottom_toTopOf="@+id/button2"-->
+    <!--app:layout_constraintHorizontal_chainStyle="packed"-->
+    <!--app:layout_constraintTop_toTopOf="@+id/guideline"-->
+    <!--app:layout_constraintVertical_bias="0.0"-->
+    <!--app:layout_constraintVertical_chainStyle="packed"-->
+    <!--tools:layout_editor_absoluteX="141dp" />-->
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        tools:layout_editor_absoluteX="141dp" />
+    <!--<Button-->
+    <!--android:id="@+id/button2"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="Button"-->
+    <!--app:layout_constraintBottom_toTopOf="@+id/button3"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/button"-->
+    <!--tools:layout_editor_absoluteX="141dp" />-->
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
-        tools:layout_editor_absoluteX="141dp" />
+    <!--<Button-->
+    <!--android:id="@+id/button3"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginBottom="8dp"-->
+    <!--android:text="Button"-->
+    <!--app:layout_constraintBottom_toTopOf="@+id/guideline3"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/button2"-->
+    <!--tools:layout_editor_absoluteX="141dp" />-->
+
+    <!--<Button-->
+        <!--android:id="@+id/b1"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="B1"-->
+        <!--app:layout_constraintHorizontal_weight="1"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--app:layout_constraintRight_toLeftOf="@+id/b2" />-->
+
+    <!--<Button-->
+        <!--android:id="@+id/b2"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="B2"-->
+        <!--app:layout_constraintLeft_toRightOf="@+id/b1"-->
+        <!--app:layout_constraintRight_toLeftOf="@id/b3" />-->
+
+    <!--<Button-->
+        <!--android:id="@+id/b3"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="B3"-->
+        <!--app:layout_constraintLeft_toRightOf="@+id/b2"-->
+        <!--app:layout_constraintRight_toRightOf="parent" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/incomeTotal"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:background="@image/balance_summary_income_bg"-->
+
+        <!--android:text="450.000$"-->
+        <!--android:textSize="18sp"-->
+        <!--app:autoSizeTextType="uniform"-->
+        <!--app:layout_constraintEnd_toStartOf="@+id/balanceTotal"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--tools:layout_editor_absoluteY="688dp" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/balanceTotal"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:autoSizeMinTextSize="16sp"-->
+        <!--android:background="@image/balance_summary_aviable_bg"-->
+        <!--android:text="+2.25000004т"-->
+        <!--app:autoSizeTextType="uniform"-->
+        <!---->
+        <!--app:layout_constraintEnd_toStartOf="@+id/expenseTotal"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/incomeTotal"-->
+        <!---->
+        <!--tools:layout_editor_absoluteY="682dp" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/expenseTotal"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:background="@image/balance_summary_expense_bg"-->
+        <!--android:ellipsize="end"-->
+        <!--android:gravity="center"-->
+        <!--android:maxLines="1"-->
+        <!--android:textAlignment="center"-->
+        <!--app:autoSizeMinTextSize="12sp"-->
+        <!--app:autoSizeMaxTextSize="18sp"-->
+        <!--app:autoSizeStepGranularity="1sp"-->
+        <!--app:autoSizeTextType="uniform"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/balanceTotal"-->
+        <!--tools:layout_editor_absoluteY="688dp" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,8 +3,8 @@ package com.axfex.moneybalance.domain.account
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.axfex.moneybalance.domain.category.AccountCategory
-import com.axfex.moneybalance.domain.operation.Amount
 import com.axfex.moneybalance.domain.currency.Currency
+import java.math.BigDecimal
 import java.util.*
 
 @Entity
@@ -14,7 +14,7 @@ abstract class Account(
     open val name: String,
     open val category: AccountCategory,
     open val owner: String,
-    open val balance: Amount,
+    open val balance: BigDecimal,
     open val currency: Currency,
     open val creationDate: Date
 )

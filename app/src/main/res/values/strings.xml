@@ -24,4 +24,9 @@
     <string name="errorMessage">qwer</string>
     <string name="unknownError">unknown</string>
     <string name="profile">Profile</string>
+    <string name="addOperationFragmentLabel">Add Operation</string>
+    <string name="menu_categories">Categories</string>
+    <string name="add">add</string>
+    <string name="done">Done</string>
+    <string name="menu_balance">Balance</string>
 </resources>
