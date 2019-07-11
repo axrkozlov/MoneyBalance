@@ -1,8 +1,6 @@
 package com.axfex.moneybalance.ui.category.edit
 
-import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +9,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.axfex.moneybalance.R
-import com.axfex.moneybalance.domain.icon.IconColor
 
-class EditCategoryColorAdapter: ListAdapter<IconColor,EditCategoryColorAdapter.ViewHolder>(IconColorDiffCallback()) {
+class EditCategoryColorAdapter: ListAdapter<Int,EditCategoryColorAdapter.ViewHolder>(IconColorDiffCallback()) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -26,20 +23,19 @@ class EditCategoryColorAdapter: ListAdapter<IconColor,EditCategoryColorAdapter.V
     }
 
     class ViewHolder(val view : View): RecyclerView.ViewHolder(view){
-        fun bind(iconColor: IconColor){
+        fun bind(iconColor: Int){
 
-            val drawable= view.findViewById<ImageView>(R.id.categoryIcon).drawable.mutate() as GradientDrawable
-            drawable.setColor(iconColor.color)
-//            imageview.setImageDrawable(image)
+            val drawable= view.findViewById<ImageView>(R.id.categoryColor).drawable.mutate() as GradientDrawable
+            drawable.setColor(iconColor)
         }
     }
 
-    class IconColorDiffCallback:DiffUtil.ItemCallback<IconColor>(){
-        override fun areContentsTheSame(oldItem: IconColor, newItem: IconColor): Boolean {
+    class IconColorDiffCallback:DiffUtil.ItemCallback<Int>(){
+        override fun areContentsTheSame(oldItem: Int, newItem: Int): Boolean {
             return newItem == oldItem
         }
 
-        override fun areItemsTheSame(oldItem: IconColor, newItem: IconColor): Boolean {
+        override fun areItemsTheSame(oldItem: Int, newItem: Int): Boolean {
             return oldItem.equals(newItem)
         }
 

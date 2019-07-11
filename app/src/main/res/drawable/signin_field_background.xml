@@ -6,6 +6,6 @@ android:shape="rectangle" >
 
 <padding android:left="22dp" android:right="22dp" android:top="2dp" />
 
-    <!--<stroke android:width="0.5dp" android:color="@color/loginFieldBorders"/>-->
+    <!--<stroke android:width="0.5dp" android:backgroundColor="@backgroundColor/loginFieldBorders"/>-->
     <solid android:color="@color/loginField"/>
 </shape>

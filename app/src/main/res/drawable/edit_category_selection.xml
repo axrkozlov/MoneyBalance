@@ -6,6 +6,6 @@
 
     <padding android:left="12dp" android:right="12dp" android:top="2dp" android:bottom="2dp" />
 
-    <!--<solid android:color="#388BE0"/>-->
+    <!--<solid android:backgroundColor="#388BE0"/>-->
 <stroke android:width="3dp" android:color="#ACBEFA"/>
 </shape>

@@ -65,7 +65,7 @@ class SignInFragment : AppFragment() {
 
         signIn.setOnClickListener { view ->
             viewModel.finishTyping()
-            hideKeyboard(view)
+            view.hideKeyboard()
             viewModel.signIn(
                 email.text.toString(),
                 password.text.toString()
@@ -74,7 +74,7 @@ class SignInFragment : AppFragment() {
 
         signUp.setOnClickListener { view ->
             viewModel.finishTyping()
-            hideKeyboard(view)
+            view.hideKeyboard()
             viewModel.signUp(
                 username.text.toString(),
                 email.text.toString(),
@@ -100,22 +100,13 @@ class SignInFragment : AppFragment() {
     fun focusChanged(view: View, hasFocus: Boolean) {
         if ((view is TextInputEditText) && hasFocus) {
             viewModel.beginTyping()
-            showKeyboard(view)
+            view.showKeyboard()
         } else {
-            hideKeyboard(view)
+            view.hideKeyboard()
             viewModel.finishTyping()
         }
     }
 
-    fun hideKeyboard(view: View) {
-        val inputMethodManager = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0)
-    }
-
-    fun showKeyboard(view: View) {
-        val inputMethodManager = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.showSoftInput(view, 0)
-    }
 
 //    fun onSignUp(view: View) {
 //        findNavController().navigate(R.id.action_fragment_login_to_signUpFragment)

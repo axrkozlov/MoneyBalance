@@ -9,7 +9,7 @@ import com.axfex.moneybalance.domain.operation.Expense
 
 //interface OperationsDao {
 //    @Query("SELECT * FROM expenses")
-//    suspend fun expences(): List<Expense>
+//    suspend fun expenses(): List<Expense>
 //
 //    @Insert(onConflict = REPLACE)
 //    suspend fun insertExpence(expense: Expense):Long

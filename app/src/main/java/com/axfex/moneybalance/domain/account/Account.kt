@@ -2,8 +2,8 @@ package com.axfex.moneybalance.domain.account
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.axfex.moneybalance.domain.category.AccountCategory
 import com.axfex.moneybalance.domain.currency.Currency
+import com.axfex.moneybalance.domain.icon.Icon
 import java.math.BigDecimal
 import java.util.*
 
@@ -12,7 +12,7 @@ abstract class Account(
     @PrimaryKey
     open val id: String= UUID.randomUUID().toString(),
     open val name: String,
-    open val category: AccountCategory,
+    open val icon: Icon,
     open val owner: String,
     open val balance: BigDecimal,
     open val currency: Currency,
@@ -23,11 +23,11 @@ abstract class Account(
 //    constructor(
 //        id: UUID,
 //        name: String,
-//        category: AccountCategory,
+//        incomeCategory: AccountCategory,
 //        owner: String,
 //        balance: Amount,
 //        currencies: HashSet<Currency>,
 //        creationDate: Date
 //    ) :
-//            this(id, name, category, owner, balance, currencies.first(), creationDate)
+//            this(id, name, incomeCategory, owner, balance, currencies.first(), creationDate)
 //}

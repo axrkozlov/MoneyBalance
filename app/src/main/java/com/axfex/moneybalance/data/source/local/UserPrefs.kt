@@ -16,7 +16,7 @@ class UserPrefs(private val sharedPreferences: SharedPreferences) {
             sharedPreferences.edit().putBoolean(KEY_FIRST_START,isComplete).apply()
         }
 
-    var displayName
+    var displayUserName
         get() = sharedPreferences.getString(DISPLAY_NAME,"")
         set(displayName){
             sharedPreferences.edit().putString(DISPLAY_NAME,displayName).apply()

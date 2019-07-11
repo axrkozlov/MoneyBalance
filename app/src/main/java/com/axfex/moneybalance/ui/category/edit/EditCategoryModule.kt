@@ -42,10 +42,11 @@ abstract class EditCategoryModule {
     class InjectAdapter {
 
         @Provides
-        fun  provideIconAdapter() = EditCategoryIconAdapter()
+        fun  provideIconAdapter(viewModel:EditCategoryViewModel) = EditCategoryIconAdapter(viewModel)
 
         @Provides
         fun  provideColorAdapter() = EditCategoryColorAdapter()
     }
+
 
 }

@@ -1,12 +1,19 @@
 package com.axfex.moneybalance.domain.category
 
+import android.util.Log
+import androidx.room.ColumnInfo
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.axfex.moneybalance.domain.icon.Icon
 
 @Entity(tableName = "expenseCategory")
 class ExpenseCategory(
-     @PrimaryKey
-     val id: String,
-     val name: String,
-     val imageUrl: String? = null
+    id: String,
+    name: String,
+    icon: Icon
+) : Category(
+    id,
+    name,
+    icon
 )

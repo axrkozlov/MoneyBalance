@@ -8,6 +8,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.Navigation.findNavController
+import androidx.navigation.get
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -37,6 +38,21 @@ class MainActivity : AppCompatActivity() {
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         nav_view.setupWithNavController(navController)
+
+//        navController.addOnDestinationChangedListener { _, destination, _ ->
+//
+//                when (destination) {
+//                navController.graph[R.id.editCategoryFragment] -> {
+//                    supportActionBar?.setHomeAsUpIndicator(R.drawable.edit_category_cancel)
+//                }
+//
+//                else -> {
+//
+//                }
+//            }
+//
+//
+//        }
 
     }
 

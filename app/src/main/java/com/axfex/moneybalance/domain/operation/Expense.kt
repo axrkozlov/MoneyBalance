@@ -20,5 +20,9 @@ data class Expense(
 //     val currency: Currency,
 //     val date: Date,
 //     val note: String?=null,
-//     val category: ExpenseCategory?=null
-)
+//     val incomeCategory: ExpenseCategory?=null
+){
+     override fun equals(other: Any?): Boolean {
+          return super.equals(other)
+     }
+}

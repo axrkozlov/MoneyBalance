@@ -14,7 +14,7 @@
         tools:context=".ui.balance.BalanceFragment">
 
         <ImageView
-            android:id="@+id/categoryIcon"
+            android:id="@+id/categoryIconPreview"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
@@ -66,10 +66,10 @@
             android:layout_height="wrap_content"
             android:background="@drawable/balance_expence_item_category_icon_bg"
             android:src="@drawable/balance_expence_item_line"
-            app:layout_constraintBottom_toBottomOf="@+id/categoryIcon"
+            app:layout_constraintBottom_toBottomOf="@+id/categoryIconPreview"
             app:layout_constraintEnd_toStartOf="@+id/amountFrame"
-            app:layout_constraintStart_toEndOf="@+id/categoryIcon"
-            app:layout_constraintTop_toTopOf="@+id/categoryIcon" />
+            app:layout_constraintStart_toEndOf="@+id/categoryIconPreview"
+            app:layout_constraintTop_toTopOf="@+id/categoryIconPreview" />
 
 
         <TextView

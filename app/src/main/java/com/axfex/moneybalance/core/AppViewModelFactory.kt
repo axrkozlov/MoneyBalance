@@ -14,6 +14,8 @@ class AppViewModelFactory @Inject constructor(
             "Provider for $modelClass returned null"
         }
 
+
+
     @Suppress("UNCHECKED_CAST")
     private fun <T : ViewModel> getProvider(modelClass: Class<T>): Provider<T> =
         try {
@@ -23,5 +25,6 @@ class AppViewModelFactory @Inject constructor(
         } catch (cce: ClassCastException) {
             error("Wrong provider type registered for ViewModel type $modelClass")
         }
+
 
 }

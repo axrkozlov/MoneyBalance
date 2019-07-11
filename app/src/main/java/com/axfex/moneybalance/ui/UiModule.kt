@@ -3,6 +3,7 @@ package com.axfex.moneybalance.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.axfex.moneybalance.core.AppViewModelFactory
+import com.axfex.moneybalance.ui.account.AccountListModule
 import com.axfex.moneybalance.ui.add_operation.AddOperationModule
 import com.axfex.moneybalance.ui.balance.BalanceModule
 import com.axfex.moneybalance.ui.category.list.CategoryListModule
@@ -29,7 +30,8 @@ import javax.inject.Provider
         ProfileModule::class,
         EditCategoryModule::class,
         CategoryListModule::class,
-        CategoryDialogModule::class
+        CategoryDialogModule::class,
+        AccountListModule::class
 
     ]
 )

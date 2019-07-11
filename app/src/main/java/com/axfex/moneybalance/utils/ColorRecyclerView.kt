@@ -15,7 +15,7 @@ import kotlin.math.min
 import kotlin.math.pow
 
 
-class CarouselRecyclerView(
+class ColorRecyclerView(
     context: Context,
     attrs: AttributeSet
 ) : RecyclerView(context, attrs) {
@@ -23,19 +23,19 @@ class CarouselRecyclerView(
     private var startArrow: Drawable? = null
     private var endArrow: Drawable? = null
 
+    init {
+        layoutManager = CarouselLayoutManager(HORIZONTAL)
+    }
 
-    fun <K : Any, T : ViewHolder> initialize(
-        newAdapter: ListAdapter<K, T>,
+    fun initialize(
         position: Int? = null,
         startArrow: Drawable? = null,
         endArrow: Drawable? = null
     ) {
 
-        layoutManager = CarouselLayoutManager(HORIZONTAL)
-        (layoutManager as CarouselLayoutManager).maxVisibleItems=2
+
         val snapHelper = LinearSnapHelper()
         snapHelper.attachToRecyclerView(this)
-        adapter = newAdapter
 
         this.startArrow = startArrow
         this.endArrow = endArrow
@@ -62,6 +62,7 @@ class CarouselRecyclerView(
 
 
     private fun onScrollChanged() {
+
         post {
 
             (0 until childCount).forEach { position ->
@@ -70,12 +71,9 @@ class CarouselRecyclerView(
                 val scaleValue = getGaussianScale(childCenterX, 1f, 1f, 150.0)
                 child.scaleX = scaleValue
                 child.scaleY = scaleValue
-
-
             }
-            setupArrows()
-
         }
+        setupArrows()
     }
 
     private fun getGaussianScale(
@@ -91,12 +89,13 @@ class CarouselRecyclerView(
     }
 
     private fun setupArrows() {
-        val firstView = (layoutManager as CarouselLayoutManager).findViewByPosition(0)
-        val endView = (layoutManager as CarouselLayoutManager).findViewByPosition(adapter!!.itemCount - 1)
+        val firstView = layoutManager?.findViewByPosition(0)
+        val endView = layoutManager?.findViewByPosition(adapter!!.itemCount - 1)
         startArrow?.let {
             it.setBounds(0, (height * 0.2).toInt(), (height * 0.8).toInt(), (height * 0.8).toInt())
             if (firstView == null) {
                 it.alpha = 0
+
             } else {
                 val offset = firstView.left
                 val offsetPercent = max(0.0, offset.toDouble() / (width / 2))
@@ -114,18 +113,25 @@ class CarouselRecyclerView(
 
             }
         }
+
+        
     }
 
     override fun onDraw(c: Canvas?) {
+
+        super.onDraw(c)
         c?.let {
             startArrow?.draw(c)
             endArrow?.draw(c)
         }
-        super.onDraw(c)
     }
 
     fun getCurrentPosition(): Int {
         return (layoutManager as CarouselLayoutManager).centerItemPosition
+    }
+
+    fun select(posotion:Int){
+        (layoutManager as CarouselLayoutManager).scrollToPosition(posotion)
     }
 
 }

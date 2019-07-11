@@ -13,7 +13,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_ready.*
 
-abstract class AppChoiseDialogFragment : BottomSheetDialogFragment() {
+abstract class AppChoiceDialogFragment : BottomSheetDialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setStyle(DialogFragment.STYLE_NORMAL, R.style.ChoiseDialog)

@@ -1,5 +1,6 @@
 package com.axfex.moneybalance.ui.category.list
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
@@ -42,8 +43,10 @@ abstract class CategoryListModule {
     class InjectAdapter {
 
         @Provides
-        fun  provideAdapter() = CategoryListAdapter()
+        fun  provideAdapter(viewModel: CategoryListViewModel) = CategoryListAdapter(viewModel)
 
+        @Provides
+        fun  providePagerAdapter(context:Context, expenseAdapter: CategoryListAdapter, incomeAdapter: CategoryListAdapter) = CategoryListPagerAdapter(context, expenseAdapter,incomeAdapter)
 
     }
 

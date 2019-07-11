@@ -33,18 +33,19 @@ class BalanceFragment : AppFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         operations.adapter=adapter
+//        findNavController().navigate(R.id.action_to_categoryListFragment)
 //        showDialog.setOnClickListener {
 //            findNavController().navigate(R.id.action_show_categoryDialog)
 //        }
 
-        findNavController().navigate(R.id.action_to_editCategoryFragment)
+
 
         addExpense.setOnClickListener{
-            findNavController().navigate(R.id.action_to_addOperationFragment)
+            findNavController().navigate(R.id.action_to_accountListFragment)
         }
 
         addIncome.setOnClickListener{
-            findNavController().navigate(R.id.action_to_addOperationFragment)
+            findNavController().navigate(R.id.action_to_categoryListFragment)
         }
     }
 

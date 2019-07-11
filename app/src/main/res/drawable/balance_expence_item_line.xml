@@ -12,8 +12,8 @@
                 <!--android:right="22dp"-->
                 <!--android:top="2dp" />-->
 
-            <!--&lt;!&ndash;<solid android:color="#9D706D"/>&ndash;&gt;-->
-            <!--<stroke android:width="2dp" android:color="#AAAAAAAA" />-->
+            <!--&lt;!&ndash;<solid android:backgroundColor="#9D706D"/>&ndash;&gt;-->
+            <!--<stroke android:width="2dp" android:backgroundColor="#AAAAAAAA" />-->
         <!--</shape>-->
     <!--</item>-->
     <!--<item>-->
@@ -28,8 +28,8 @@
                 <!--android:right="22dp"-->
                 <!--android:top="2dp" />-->
 
-            <!--<solid android:color="#9D706D" />-->
-            <!--&lt;!&ndash;<stroke android:width="2dp" android:color="#AAAAAAAA" />&ndash;&gt;-->
+            <!--<solid android:backgroundColor="#9D706D" />-->
+            <!--&lt;!&ndash;<stroke android:width="2dp" android:backgroundColor="#AAAAAAAA" />&ndash;&gt;-->
 
         <!--</shape>-->
     <!--</item>-->

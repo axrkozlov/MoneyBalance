@@ -96,14 +96,14 @@ class UserManager(private val userPrefs: UserPrefs) {
 
 
     private fun setCurrentUser(user: FirebaseUser) {
-        userPrefs.displayName= user.displayName
+        userPrefs.displayUserName= user.displayName
     }
 
     fun logout() {
         auth.signOut()
         
         currentUser.value=NotAuthenticated
-        userPrefs.displayName=""
+        userPrefs.displayUserName=""
         userPrefs.isFirstStartComplete=false
     }
 

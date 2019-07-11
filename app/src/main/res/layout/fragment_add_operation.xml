@@ -84,7 +84,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/categoryIcon"
+            android:id="@+id/categoryIconPreview"
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -105,9 +105,9 @@
             android:text="Devices"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="@+id/categoryIcon"
-            app:layout_constraintStart_toStartOf="@+id/categoryIcon"
-            app:layout_constraintTop_toBottomOf="@id/categoryIcon" />
+            app:layout_constraintEnd_toEndOf="@+id/categoryIconPreview"
+            app:layout_constraintStart_toStartOf="@+id/categoryIconPreview"
+            app:layout_constraintTop_toBottomOf="@id/categoryIconPreview" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

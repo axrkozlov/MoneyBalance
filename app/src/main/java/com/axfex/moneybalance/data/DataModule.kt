@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.axfex.moneybalance.core.App
 import com.axfex.moneybalance.data.source.Repository
-import com.axfex.moneybalance.data.source.local.MoneyBallanceDataBase
+import com.axfex.moneybalance.data.source.local.MoneyBalanceDataBase
 import com.axfex.moneybalance.data.source.local.LocalDataSource
 import com.axfex.moneybalance.data.source.local.UserPrefs
 import com.axfex.moneybalance.data.source.local.dao.CategoriesDao
@@ -42,12 +42,12 @@ class DataModule {
 
 //    @Provides
 //    @Singleton
-//    fun provideOperationsDao(database: MoneyBallanceDataBase) =
+//    fun provideOperationsDao(database: MoneyBalanceDataBase) =
 //        database.operationsDao()
 
     @Provides
     @Singleton
-    fun provideCategoriesDao(database: MoneyBallanceDataBase) =
+    fun provideCategoriesDao(database: MoneyBalanceDataBase) =
         database.categoriesDao()
 
     @Provides
@@ -64,7 +64,7 @@ class DataModule {
     fun provideDatabase(context: Context) =
         Room.databaseBuilder(
             context,
-            MoneyBallanceDataBase::class.java,
+            MoneyBalanceDataBase::class.java,
             "MoneyBalance.db"
         )
             .build()

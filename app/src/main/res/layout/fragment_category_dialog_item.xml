@@ -11,7 +11,7 @@
      android:layout_weight="1">
 
     <ImageView
-        android:id="@+id/categoryIcon"
+        android:id="@+id/categoryIconPreview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"

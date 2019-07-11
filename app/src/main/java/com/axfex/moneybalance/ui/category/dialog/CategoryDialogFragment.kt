@@ -10,12 +10,12 @@ import android.widget.LinearLayout
 import androidx.navigation.fragment.findNavController
 
 import com.axfex.moneybalance.R
-import com.axfex.moneybalance.core.AppChoiseDialogFragment
+import com.axfex.moneybalance.core.AppChoiceDialogFragment
 import com.axfex.moneybalance.utils.addKeyboardEventListener
 import kotlinx.android.synthetic.main.fragment_category_dialog.*
 import javax.inject.Inject
 
-class CategoryDialogFragment : AppChoiseDialogFragment() {
+class CategoryDialogFragment : AppChoiceDialogFragment() {
 
     @Inject
     lateinit var viewModel: CategoryDialogViewModel
@@ -44,7 +44,7 @@ class CategoryDialogFragment : AppChoiseDialogFragment() {
 
         addCategory.setOnClickListener {
             dismiss()
-            findNavController().navigate(R.id.action_to_editCategoryFragment)
+            findNavController().navigate(R.id.action_to_categoryListFragment)
         }
 
         searchCategory.setOnFocusChangeListener { _, _ ->

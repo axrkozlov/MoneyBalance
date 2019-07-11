@@ -120,6 +120,7 @@ class SignInViewModel(val userManager: UserManager) : ViewModel(), CoroutineScop
         object SignUp : SignModeViewState()
     }
 
+    @ExperimentalCoroutinesApi
     override fun onCleared() {
         super.onCleared()
         cancel()

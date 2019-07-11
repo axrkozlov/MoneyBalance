@@ -1,7 +1,7 @@
 package com.axfex.moneybalance.utils.remove
 //import android.text.TextUtils
 //import android.util.Patterns
-//import com.axfex.moneybalance.utils.remove.Credentials.ValidationResult.*
+//import com.axfex.moneybalance.utils.delete.Credentials.ValidationResult.*
 //
 //data class Credentials(val email:String, val password:String){
 //

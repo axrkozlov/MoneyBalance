@@ -5,53 +5,72 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.category.edit.EditCategoryFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/editCategoryRoot">
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp">
-        <com.axfex.moneybalance.utils.CarouselRecyclerView
+
+
+        <com.axfex.moneybalance.utils.ColorRecyclerView
             android:id="@+id/editCategoryColorRecycler"
             android:layout_width="match_parent"
-            android:paddingTop="8dp"
             android:layout_height="95dp"
-            android:paddingBottom="8dp"
-            android:requiresFadingEdge="horizontal|vertical"
-            tools:orientation="horizontal"
-            tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:itemCount="10"
             android:clipToPadding="false"
-            tools:listitem="@layout/fragment_edit_category_color_item"/>
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            tools:itemCount="10"
+            tools:listitem="@layout/fragment_edit_category_color_item"
+            tools:orientation="horizontal" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/iconLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:layout_gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/categoryIcon"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:foregroundGravity="center"
+            android:id="@+id/categoryIconPreview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:src="@android:drawable/ic_menu_view"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 
     <EditText
         android:id="@+id/categoryName"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
+        android:maxLines="1"
+        android:imeOptions="actionDone"
         android:hint="category name"
-        android:inputType="text" />
-    <com.axfex.moneybalance.utils.SelectionRecyclerView
+        android:inputType="text"
+        android:textAlignment="center"
+        android:layout_gravity="center"/>
+
+    <com.axfex.moneybalance.utils.IconRecyclerView
         android:id="@+id/editCategoryIconRecycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginTop="8dp"
         android:orientation="vertical"
-        android:requiresFadingEdge="horizontal|vertical"
         android:scrollbars="vertical"
-
-        tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        android:requiresFadingEdge="vertical"
         app:spanCount="4"
         tools:itemCount="30"
         tools:listitem="@layout/fragment_edit_category_item"/>

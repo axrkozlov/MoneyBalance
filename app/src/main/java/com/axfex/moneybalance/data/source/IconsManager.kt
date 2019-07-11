@@ -1,89 +1,57 @@
 package com.axfex.moneybalance.data.source
 
 import android.content.Context
-import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.util.Log
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import com.axfex.moneybalance.R
 import com.axfex.moneybalance.domain.icon.Icon
-import com.axfex.moneybalance.domain.icon.IconColor
 import java.io.IOException
 
 class IconsManager(val context: Context) {
 
 
-    private val ICONS_FOLDER="icons/drawable"
+    private val ICONS_FOLDER = "icons/drawable"
 
-    val icons = ArrayList<Icon>()
+    fun colorList(): List<Int> {
+        val colors = ArrayList<Int>()
+        val colorArray = context.resources.obtainTypedArray(R.array.iconColors)
 
-    val colors= ArrayList<IconColor>()
-
-    init {
-        loadIcons()
-        loadColors()
-    }
-
-    private fun loadColors() {
-
-        val colorArray=context.resources.obtainTypedArray(R.array.iconColors)
-        for (i in 0..colorArray.length()-1) {
-            val name=context.resources.getResourceEntryName(colorArray.getResourceId(i,0))
-            val color=colorArray.getColor(i,0)
-
-            val iconColor=IconColor(name,color)
-            val id = context.resources.getIdentifier(name,"gray",context.packageName)
-//            Log.i("IconsManager", "loadColors:$name, ${colorArray.getString(i)},${id},${colorArray.getColor(i,0)}")
-
-            colors.add(iconColor)
+        for (i in 0 until colorArray.length()) {
+//            val name=context.resources.getResourceEntryName(colorArray.getResourceId(i,0))
+            val color = colorArray.getColor(i, 0)
+            colors.add(color)
         }
-
         colorArray.recycle()
-
+        return colors
     }
 
 
-    private fun loadIcons(){
+    fun iconList(): List<Icon> {
+        val icons = ArrayList<Icon>()
         try {
             val iconNames = context.assets.list(this.ICONS_FOLDER)
 
             iconNames?.forEach {
-                val parser=context.assets.openXmlResourceParser("assets/${this.ICONS_FOLDER}/$it")
-                val d = VectorDrawableCompat.createFromXml(context.resources,parser)
-                val icon= Icon(it,d,null)
+                val icon = Icon(it, 0)
+                icon.sortOrder = "(\\d+)".toRegex().find(it)?.groups?.get(0)?.value?.toInt()
                 icons.add(icon)
             }
-        } catch (e:IOException){
-            Log.e("IconsManager", "loadIcons: ", e )
+
+        } catch (e: IOException) {
+            Log.e("IconsManager", "loadIcons: ", e)
         }
+        return icons.sortedBy { it.sortOrder }
     }
 
-    private fun icon(name:String){
-
+    private fun inflateVectorDrawable(name : String) : Drawable {
+        val parser = context.assets.openXmlResourceParser("assets/$ICONS_FOLDER/$name")
+        return VectorDrawableCompat.createFromXml(context.resources, parser)
     }
 
-    private fun icon(name:String,color:String){
-
+    fun getIconDrawable(icon: Icon): Drawable {
+        return inflateVectorDrawable(icon.name)
     }
 
-
-
-//    private fun loadIcons():List<Drawable>{
-//
-//        val icons:ArrayList<Drawable> = ArrayList()
-//        try {
-//            val iconNames = context.assets.list(ICONS_FOLDER)
-//            iconNames?.forEach {
-//                val d = Drawable.createFromStream(context.assets.open("$ICONS_FOLDER/$it"), null)
-//                icons.add(d)
-//            }
-//
-//        } catch (e:IOException){
-//            Log.e("IconsManager", "loadIcons: ", e )
-//        }
-//
-//        return icons
-//    }
-//
 
 }
