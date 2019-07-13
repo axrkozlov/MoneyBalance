@@ -7,7 +7,7 @@ import androidx.viewpager.widget.PagerAdapter
 import android.view.LayoutInflater
 import androidx.viewpager.widget.ViewPager
 import com.axfex.moneybalance.R
-import com.axfex.moneybalance.ui.category.CategoryTypesEnum
+import com.axfex.moneybalance.domain.model.category.CategoryType
 import kotlinx.android.synthetic.main.fragment_category_list_tab.view.*
 
 
@@ -61,10 +61,10 @@ class CategoryListPagerAdapter(
     }
 
 
-    fun currentTab(): CategoryTypesEnum {
+    fun currentTab(): CategoryType {
         return when (viewPager?.currentItem) {
-            0 -> CategoryTypesEnum.EXPENSE_CATEGORY
-            1 -> CategoryTypesEnum.INCOME_CATEGORY
+            0 -> CategoryType.EXPENSE_CATEGORY
+            1 -> CategoryType.INCOME_CATEGORY
             else -> throw Exception("wrong incomeCategory tab number")
         }
 

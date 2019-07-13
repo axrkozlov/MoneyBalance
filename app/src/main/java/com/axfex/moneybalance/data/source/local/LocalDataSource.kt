@@ -1,15 +1,18 @@
 package com.axfex.moneybalance.data.source.local
 
-import androidx.lifecycle.LiveData
 import com.axfex.moneybalance.data.source.OperationsDataSource
 import com.axfex.moneybalance.data.source.local.dao.CategoriesDao
-import com.axfex.moneybalance.domain.category.ExpenseCategory
-import com.axfex.moneybalance.domain.category.IncomeCategory
-import com.axfex.moneybalance.domain.operation.Operation
+import com.axfex.moneybalance.data.source.local.dao.IconsDao
+import com.axfex.moneybalance.domain.model.category.ExpenseCategory
+import com.axfex.moneybalance.domain.model.category.IncomeCategory
+import com.axfex.moneybalance.domain.model.icon.Icon
+import com.axfex.moneybalance.domain.model.operation.Operation
 import java.math.BigDecimal
 
 
-class LocalDataSource(val categoriesDao: CategoriesDao) : OperationsDataSource {
+class LocalDataSource(
+    val iconsDao: IconsDao,
+    val categoriesDao: CategoriesDao) : OperationsDataSource {
 
     init {
 
@@ -35,6 +38,9 @@ class LocalDataSource(val categoriesDao: CategoriesDao) : OperationsDataSource {
 //        return null
 //    }
 
+    fun insertIcons(vararg icons: Icon) = iconsDao.insertIcons(*icons)
+    fun iconList()=iconsDao.iconList()
+
     fun expenseCategoryList() = categoriesDao.expenseCategoryList()
     fun incomeCategoryList() = categoriesDao.incomeCategoryList()
 
@@ -47,5 +53,6 @@ class LocalDataSource(val categoriesDao: CategoriesDao) : OperationsDataSource {
     fun deleteIncomeCategory(categoryId: String) =  categoriesDao.deleteIncomeCategory(categoryId)
     fun deleteExpenseCategory(categoryId: String) =  categoriesDao.deleteExpenseCategory(categoryId)
 
-fun search()=categoriesDao.search()
+
+fun categoryList()=categoriesDao.categoryList()
 }

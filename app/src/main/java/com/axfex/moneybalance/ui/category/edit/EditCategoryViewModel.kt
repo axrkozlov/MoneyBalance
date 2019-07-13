@@ -1,11 +1,12 @@
 package com.axfex.moneybalance.ui.category.edit
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel;
 import com.axfex.moneybalance.data.source.Repository
-import com.axfex.moneybalance.domain.category.ExpenseCategory
-import com.axfex.moneybalance.domain.category.IncomeCategory
-import com.axfex.moneybalance.domain.icon.Icon
-import com.axfex.moneybalance.ui.category.CategoryTypesEnum
+import com.axfex.moneybalance.domain.model.category.Category
+import com.axfex.moneybalance.domain.model.category.CategoryType
+import com.axfex.moneybalance.domain.model.category.ExpenseCategory
+import com.axfex.moneybalance.domain.model.category.IncomeCategory
 import com.axfex.moneybalance.utils.FreshMutableLiveData
 import kotlinx.coroutines.*
 import java.util.*
@@ -24,19 +25,18 @@ class EditCategoryViewModel(val repo: Repository) : ViewModel(), CoroutineScope 
 
     val messageEvent = FreshMutableLiveData<Message>()
 
-    fun category(categoryId: String, type: CategoryTypesEnum?) {
-        when (type) {
-            CategoryTypesEnum.EXPENSE_CATEGORY -> expenseCategory(categoryId)
-            CategoryTypesEnum.INCOME_CATEGORY -> incomeCategory(categoryId)
-            null -> return
+    fun category(categoryId: String, type: CategoryType):LiveData<out Category>? {
+        return when (type) {
+            CategoryType.EXPENSE_CATEGORY -> expenseCategory(categoryId)
+            CategoryType.INCOME_CATEGORY -> incomeCategory(categoryId)
         }
     }
 
     fun saveCategory(
         name: String,
-        iconIndex: Int,
-        colorIndex: Int,
-        type: CategoryTypesEnum?,
+        iconName:String,
+        color: Int,
+        type: CategoryType,
         id: String? = null
     ): Boolean {
 
@@ -46,33 +46,42 @@ class EditCategoryViewModel(val repo: Repository) : ViewModel(), CoroutineScope 
         }
 
         val categoryId = id ?: UUID.randomUUID().toString()
-        val icon = iconList[iconIndex]
-        icon.backgroundColor = colorList[colorIndex]
+
         when (type) {
-            CategoryTypesEnum.EXPENSE_CATEGORY -> {
+            CategoryType.EXPENSE_CATEGORY -> {
                 val category = ExpenseCategory(
                     categoryId,
                     name,
-                    icon
+                    iconName,
+                    color,
+                    CategoryType.EXPENSE_CATEGORY
                 )
                 insertExpenseCategory(category)
             }
-            CategoryTypesEnum.INCOME_CATEGORY -> {
+            CategoryType.INCOME_CATEGORY -> {
                 val category = IncomeCategory(
                     categoryId,
                     name,
-                    icon
+                    iconName,
+                    color,
+                    CategoryType.INCOME_CATEGORY
                 )
                 insertIncomeCategory(category)
             }
-            null -> return false
         }
 
         return true
     }
 
-    fun expenseCategory(categoryId: String) = repo.expenseCategory(categoryId)
-    fun incomeCategory(categoryId: String) = repo.incomeCategory(categoryId)
+    fun deleteCategory(categoryId: String, type: CategoryType) {
+        when (type) {
+            CategoryType.EXPENSE_CATEGORY -> deleteExpenseCategory(categoryId)
+            CategoryType.INCOME_CATEGORY -> deleteIncomeCategory(categoryId)
+        }
+    }
+
+    private fun expenseCategory(categoryId: String) = repo.expenseCategory(categoryId)
+    private fun incomeCategory(categoryId: String) = repo.incomeCategory(categoryId)
 
     private fun insertExpenseCategory(category: ExpenseCategory) {
         launch(Dispatchers.IO) {
@@ -86,13 +95,6 @@ class EditCategoryViewModel(val repo: Repository) : ViewModel(), CoroutineScope 
         }
     }
 
-    fun deleteCategory(categoryId: String, type: CategoryTypesEnum?) {
-        when (type) {
-            CategoryTypesEnum.EXPENSE_CATEGORY -> deleteExpenseCategory(categoryId)
-            CategoryTypesEnum.INCOME_CATEGORY -> deleteIncomeCategory(categoryId)
-            null -> return
-        }
-    }
 
     private fun deleteExpenseCategory (categoryId: String) {
         launch(Dispatchers.IO) {
@@ -112,18 +114,18 @@ class EditCategoryViewModel(val repo: Repository) : ViewModel(), CoroutineScope 
         cancel()
     }
 
-    fun getIconDrawable(icon: Icon) = repo.getIconDrawable(icon)
+    fun getIconDrawable(iconName: String) = repo.getIconDrawable(iconName)
 
 
 
 
-    fun findIconPosition(findIcon: Icon): Int? {
-        return iconList.indexOfFirst { findIcon.name == it.name }
+    fun findIconPosition(findIconName: String): Int? {
+        return iconList.value?.indexOfFirst { findIconName == it.name }
 //        return iconList.find {findIcon.name == it.name}?.sortOrder
     }
 
-    fun findColorPosition(findIcon: Icon): Int? {
-        return colorList.indexOfFirst { findIcon.backgroundColor == it }
+    fun findColorPosition(color: Int): Int? {
+        return colorList.indexOfFirst { color == it }
 //        return iconList.find {findIcon.name == it.name}?.sortOrder
     }
 

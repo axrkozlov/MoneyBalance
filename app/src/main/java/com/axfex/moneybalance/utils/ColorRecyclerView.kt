@@ -28,7 +28,6 @@ class ColorRecyclerView(
     }
 
     fun initialize(
-        position: Int? = null,
         startArrow: Drawable? = null,
         endArrow: Drawable? = null
     ) {
@@ -50,8 +49,6 @@ class ColorRecyclerView(
 
         val globalLayoutListener = object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
-
-                position?.let { scrollToPosition(it) }
                 setupArrows()
                 viewTreeObserver.removeOnGlobalLayoutListener(this)
             }
@@ -126,12 +123,5 @@ class ColorRecyclerView(
         }
     }
 
-    fun getCurrentPosition(): Int {
-        return (layoutManager as CarouselLayoutManager).centerItemPosition
-    }
-
-    fun select(posotion:Int){
-        (layoutManager as CarouselLayoutManager).scrollToPosition(posotion)
-    }
 
 }

@@ -1,4 +1,4 @@
-package com.axfex.moneybalance.domain.currency
+package com.axfex.moneybalance.domain.model.currency
 
 import java.util.*
 

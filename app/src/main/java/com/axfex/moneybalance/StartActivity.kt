@@ -6,10 +6,12 @@ import android.os.Bundle
 import android.view.animation.LinearInterpolator
 import androidx.navigation.NavController
 import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.get
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.transition.*
 import com.axfex.moneybalance.R
+import com.axfex.moneybalance.core.App
 import com.axfex.moneybalance.utils.visible
 import kotlinx.android.synthetic.main.activity_start.*
 
@@ -21,12 +23,15 @@ class StartActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         setContentView(R.layout.activity_start)
-
         navController = findNavController(this, R.id.start_nav_fragment)
-//        setupAppBar()
+        if ((application as App).splashShowed) {
+            navController.navigate(R.id.action_to_mainActivity)
+            finish()
+        }
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         setupWelcomePager()
+        (application as App).splashShowed=true
     }
 
     private fun setupWelcomePager() {

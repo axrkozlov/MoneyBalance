@@ -3,19 +3,18 @@ package com.axfex.moneybalance.data.source.local.dao
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import androidx.room.OnConflictStrategy.REPLACE
-import com.axfex.moneybalance.data.source.local.CategoryView
-import com.axfex.moneybalance.domain.category.Category
-import com.axfex.moneybalance.domain.category.ExpenseCategory
-import com.axfex.moneybalance.domain.category.IncomeCategory
-import java.util.*
+import com.axfex.moneybalance.domain.model.category.Category
+import com.axfex.moneybalance.domain.model.category.CategoryView
+import com.axfex.moneybalance.domain.model.category.ExpenseCategory
+import com.axfex.moneybalance.domain.model.category.IncomeCategory
 
 @Dao
 interface CategoriesDao{
-    @Query("SELECT * FROM expenseCategory UNION SELECT * FROM incomeCategory")
-    fun expenseCategoryList(): LiveData<List<Category>>
+    @Query("SELECT * FROM expenseCategory")
+    fun expenseCategoryList(): LiveData<List<CategoryView>>
 
     @Query("SELECT * FROM incomeCategory")
-    fun incomeCategoryList(): LiveData<List<IncomeCategory>>
+    fun incomeCategoryList(): LiveData<List<CategoryView>>
 
     @Query("Select * FROM expenseCategory where id = :categoryId")
     fun expenseCategory(categoryId: String): LiveData<ExpenseCategory>
@@ -36,6 +35,6 @@ interface CategoriesDao{
     fun deleteIncomeCategory(categoryId: String)
 
     @Query("SELECT * FROM CategoryView")
-    fun search(): LiveData<List<CategoryView>>
+    fun categoryList(): LiveData<List<CategoryView>>
 
 }

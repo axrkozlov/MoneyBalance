@@ -2,14 +2,14 @@ package com.axfex.moneybalance.ui.category.list
 
 import androidx.lifecycle.ViewModel;
 import com.axfex.moneybalance.data.source.Repository
-import com.axfex.moneybalance.domain.icon.Icon
+import com.axfex.moneybalance.domain.model.icon.Icon
 
 class CategoryListViewModel(val repo:Repository) : ViewModel() {
 
     fun expenseCategoryList()=repo.expenseCategoryList()
     fun incomeCategoryList()=repo.incomeCategoryList()
 
-    fun getIconDrawable(icon: Icon) = repo.getIconDrawable(icon)
+    fun getIconDrawable(iconName: String) = repo.getIconDrawable(iconName)
 
-    fun search()=repo.search()
+    fun categoryList()=repo.categoryList()
 }

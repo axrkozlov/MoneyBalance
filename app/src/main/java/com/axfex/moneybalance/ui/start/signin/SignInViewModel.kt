@@ -3,7 +3,7 @@ package com.axfex.moneybalance.ui.start.signin
 import android.text.TextUtils
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.axfex.moneybalance.domain.auth.UserManager
+import com.axfex.moneybalance.domain.model.auth.UserManager
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 import com.axfex.moneybalance.ui.start.signin.SignInViewModel.SigninViewState.*

@@ -74,7 +74,7 @@
             android:defaultValue="@null"/>
         <argument
             android:name="categoryType"
-            app:argType="com.axfex.moneybalance.ui.category.CategoryTypesEnum" />
+            app:argType="com.axfex.moneybalance.domain.model.category.CategoryType" />
 
     </fragment>
     <fragment

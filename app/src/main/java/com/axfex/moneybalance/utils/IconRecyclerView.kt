@@ -20,29 +20,25 @@ class IconRecyclerView(
 ) : RecyclerView(context, attrs) {
 
 
-    private var selectionCallback: ((selectedPosition: Int) -> Unit)? = null
+//    private var selectionCallback: ((selectedIconName: Int) -> Unit)? = null
 
     private lateinit var itemDecoration: SelectionDecoration
 
-    var selectedPosition: Int = 0
+//    var selectedIconName: Int = 0
 
-    init{
+    init {
         layoutManager = GridLayoutManager(context, 4)
     }
 
     fun initialize(
-        position: Int? = null,
         selectionView: Drawable
     ) {
 
         itemDecoration = SelectionDecoration(selectionView)
         addItemDecoration(itemDecoration)
 
-        position?.let{selectedPosition=it}
-
         val globalLayoutListener = object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
-                scrollToPosition(selectedPosition)
                 viewTreeObserver.removeOnGlobalLayoutListener(this)
             }
         }
@@ -57,18 +53,26 @@ class IconRecyclerView(
 
             for (i in 0 until parent.childCount) {
 
+//                val view = parent.getChildAt(i)
+//                val params = view.layoutParams as LayoutParams
+//                val position = params.viewAdapterPosition
+//                view.setOnClickListener { select(position) }
+
+//                if (selectedIconName == position) {
+//                    val dimen = max(view.right - view.left, view.bottom - view.top)
+//
+//                    selectionView.setBounds(view.left, view.top, view.left + dimen, view.top + dimen)
+//                    selectionView.draw(c)
+//                }
+
                 val view = parent.getChildAt(i)
-                val params = view.layoutParams as LayoutParams
-                val position = params.viewAdapterPosition
-                view.setOnClickListener { select(position) }
+                if (view.isActivated) {
 
-                if (selectedPosition == position) {
                     val dimen = max(view.right - view.left, view.bottom - view.top)
-
                     selectionView.setBounds(view.left, view.top, view.left + dimen, view.top + dimen)
                     selectionView.draw(c)
-                }
 
+                }
 
             }
 
@@ -77,37 +81,37 @@ class IconRecyclerView(
 
     }
 
-    fun select(position: Int) {
-        adapter?.notifyItemChanged(selectedPosition, "payload $selectedPosition")
-        selectedPosition = position
-        adapter?.notifyItemChanged(selectedPosition, "payload $selectedPosition")
+//    fun select(position: Int) {
+//        adapter?.notifyItemChanged(selectedIconName, "payload $selectedIconName")
+//        selectedIconName = position
+//        adapter?.notifyItemChanged(selectedIconName, "payload $selectedIconName")
+//
+//        if (
+//            (layoutManager as GridLayoutManager).findFirstCompletelyVisibleItemPosition()>position ||
+//            (layoutManager as GridLayoutManager).findLastCompletelyVisibleItemPosition()<position
+//        ) scrollToPosition(position)
+//        selectionCallback?.let { it(selectedIconName) }
+//    }
 
-        if (
-            (layoutManager as GridLayoutManager).findFirstCompletelyVisibleItemPosition()>position ||
-            (layoutManager as GridLayoutManager).findLastCompletelyVisibleItemPosition()<position
-        ) scrollToPosition(position)
-        selectionCallback?.let { it(selectedPosition) }
-    }
-
-    fun onSaveInstanceState(state: Bundle?) {
-        state?.putInt("selectedPosition", selectedPosition)
-    }
-
-    fun onRestoreInstanceState(state: Bundle?) {
-        state?.let {
-            selectedPosition = it.getInt("selectedPosition", 0)
-        }
-    }
-
-    fun getCurrentPosition(): Int {
-        return selectedPosition
-    }
-
-    fun setSelectionChangeCallback(callback: (selectedPosition: Int) -> Unit) {
-        selectionCallback = callback
-        selectionCallback?.let { it(selectedPosition) }
-
-    }
+//    fun onSaveInstanceState(state: Bundle?) {
+//        state?.putInt("selectedIconName", selectedIconName)
+//    }
+//
+//    fun onRestoreInstanceState(state: Bundle?) {
+//        state?.let {
+//            selectedIconName = it.getInt("selectedIconName", 0)
+//        }
+//    }
+//
+//    fun getCurrentPosition(): Int {
+//        return selectedIconName
+//    }
+//
+//    fun setSelectionChangeCallback(callback: (selectedIconName: Int) -> Unit) {
+//        selectionCallback = callback
+//        selectionCallback?.let { it(selectedIconName) }
+//
+//    }
 
 
 }

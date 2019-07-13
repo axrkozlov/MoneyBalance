@@ -25,6 +25,7 @@ class SplashFragment : AppFragment() {
     override fun onResume() {
         super.onResume()
         handler.postDelayed({
+
             if (viewModel.isFirstStartComplete) {
                 findNavController().navigate(R.id.action_to_mainActivity)
                 activity?.finish()

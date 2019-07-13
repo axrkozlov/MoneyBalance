@@ -1,16 +1,17 @@
-package com.axfex.moneybalance.domain.category
+package com.axfex.moneybalance.domain.model.category
 
 import androidx.room.*
-import com.axfex.moneybalance.domain.icon.Icon
+import com.axfex.moneybalance.domain.converters.TypesConverter
 import java.util.*
 
-@Entity
-open class Category(
+@TypeConverters(TypesConverter::class)
+abstract class Category(
     @PrimaryKey
     open val id: String= UUID.randomUUID().toString(),
     open val name:String,
-    @Embedded(prefix = "icon")
-    val icon: Icon
+    val iconName: String,
+    val color : Int,
+    val type:CategoryType
 ) {
 
 
@@ -21,7 +22,7 @@ open class Category(
         if(other !is Category)
             return false
 
-        return (other.name == this.name && other.id == this.id && other.icon==this.icon)
+        return (other.name == this.name && other.id == this.id && other.iconName==this.iconName && other.type==this.type)
     }
 
     override fun hashCode(): Int {

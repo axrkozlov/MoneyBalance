@@ -1,11 +1,10 @@
-package com.axfex.moneybalance.domain.operation
+package com.axfex.moneybalance.domain.model.operation
 
 
-import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.axfex.moneybalance.domain.account.Account
-import com.axfex.moneybalance.domain.category.Category
-import com.axfex.moneybalance.domain.currency.Currency
+import com.axfex.moneybalance.domain.model.account.Account
+import com.axfex.moneybalance.domain.model.category.Category
+import com.axfex.moneybalance.domain.model.currency.Currency
 import java.math.BigDecimal
 import java.util.*
 

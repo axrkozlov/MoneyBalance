@@ -6,12 +6,13 @@ import android.util.Log
 import android.view.*
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.axfex.moneybalance.R
 import com.axfex.moneybalance.core.AppFragment
-import com.axfex.moneybalance.domain.category.Category
-import com.axfex.moneybalance.ui.category.CategoryTypesEnum
+import com.axfex.moneybalance.domain.model.category.Category
+import com.axfex.moneybalance.domain.model.category.CategoryType
 import com.axfex.moneybalance.utils.hideKeyboard
 import com.axfex.moneybalance.utils.showKeyboard
 import com.axfex.moneybalance.utils.subscribe
@@ -36,8 +37,8 @@ class EditCategoryFragment : AppFragment() {
     private val args: EditCategoryFragmentArgs by navArgs()
 
 
-    private var categoryId: String? = null
-    private var categoryType: CategoryTypesEnum? = null
+    private val categoryId: String? by lazy { args.categoryId }
+    private val categoryType: CategoryType by lazy { args.categoryType }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,28 +52,83 @@ class EditCategoryFragment : AppFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        categoryId = args.categoryId
-        categoryType = args.categoryType
+
+        iconAdapter.onRestoreInstanceState(savedInstanceState)
+
+        setupUI()
+
         viewModel.messageEvent.subscribe(this, this::showMessage)
+        if (categoryId != null && savedInstanceState == null)
+            viewModel.category(categoryId!!, categoryType)?.subscribe(this) {
+                categoryName.setText(it.name)
+                iconAdapter.selectByName(it.iconName)
+                colorAdapter.selectByColor(it.color)
+            }
 
-        editCategoryIconRecycler.onRestoreInstanceState(savedInstanceState)
-        editCategoryIconRecycler.adapter=iconAdapter
+//        else render(null)
 
 
-        editCategoryColorRecycler.adapter=colorAdapter
+        viewModel.iconList.subscribe(this) {
+            iconAdapter.submitList(it)
 
-
-        if (categoryId!=null && savedInstanceState==null)
-            viewModel.expenseCategory(categoryId!!).subscribe(this, this::render)
-        else render(null)
-
+        }
+        colorAdapter.submitList(viewModel.colorList)
     }
+
+
+    fun setupUI() {
+        editCategoryIconRecycler.adapter = iconAdapter
+        editCategoryColorRecycler.adapter = colorAdapter
+        val selectionView = resources.getDrawable(R.drawable.edit_category_selection, null)
+        editCategoryIconRecycler.initialize(
+            selectionView = selectionView
+        )
+
+//        iconAdapter.selectionEvent.subscribe(this){ name->
+//            categoryIconPreview.setImageDrawable( viewModel.getIconDrawable(name))
+//            Log.i("EditCategoryFragment", "setupUI: $name")
+//        }
+
+        iconAdapter.setSelectionChangeCallback { name ->
+            categoryIconPreview.setImageDrawable(
+                viewModel.getIconDrawable(name)
+
+            )
+            Log.i("EditCategoryFragment", "setupUI: $name")
+
+        }
+
+        val leftArrow = resources.getDrawable(R.drawable.edit_category_left_arrow, null)
+        val rightArrow = resources.getDrawable(R.drawable.edit_category_right_arrow, null)
+        editCategoryColorRecycler.initialize(
+            startArrow = leftArrow,
+            endArrow = rightArrow
+        )
+    }
+
+
+//    private fun render(category: Category?) {
+//
+//        var iconPosition: Int? = null
+//        var colorPosition: Int? = null
+//
+//        category?.let {
+//
+//            colorPosition = viewModel.findColorPosition(category.color)
+//
+//        }
+//
+//
+//
+//
+//    }
+
 
     private fun showMessage(message: EditCategoryViewModel.Message) {
         when (message) {
             is EditCategoryViewModel.Message.EmptyName -> {
-                val snackbar= Snackbar.make(editCategoryRoot, R.string.editCategoryEmptyName, LENGTH_SHORT)
-                snackbar.addCallback(object: Snackbar.Callback(){
+                val snackbar = Snackbar.make(editCategoryRoot, R.string.editCategoryEmptyName, LENGTH_SHORT)
+                snackbar.addCallback(object : Snackbar.Callback() {
                     override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
                         categoryName.requestFocus()
                         categoryName.showKeyboard()
@@ -87,7 +143,7 @@ class EditCategoryFragment : AppFragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        editCategoryIconRecycler.onSaveInstanceState(outState)
+        iconAdapter.onSaveInstanceState(outState)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -101,9 +157,9 @@ class EditCategoryFragment : AppFragment() {
             R.id.done -> {
                 view?.hideKeyboard()
                 val name = categoryName.text.toString()
-                val colorIndex = editCategoryColorRecycler.getCurrentPosition()
-                val iconIndex = editCategoryIconRecycler.getCurrentPosition()
-                val saved = viewModel.saveCategory(name, iconIndex, colorIndex,categoryType,categoryId)
+                val iconName = iconAdapter.selectedIconName
+                val color = colorAdapter.selectedColor()
+                val saved = viewModel.saveCategory(name, iconName, color,categoryType,categoryId)
                 if (saved) findNavController().navigateUp()
             }
             R.id.delete -> {
@@ -128,7 +184,7 @@ class EditCategoryFragment : AppFragment() {
             .setTitle(dialogTitle)
             .setPositiveButton(R.string.bt_ok) { d, i ->
                 run {
-                    viewModel.deleteCategory(categoryId!!,categoryType)
+                    viewModel.deleteCategory(categoryId!!, categoryType)
                     findNavController().navigateUp()
                 }
             }
@@ -140,42 +196,6 @@ class EditCategoryFragment : AppFragment() {
     fun hideKeyboard(view: View) {
         val inputMethodManager = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0)
-    }
-
-    private fun render(category: Category?) {
-        Log.i("EditCategoryFragment", "render: $category")
-        
-        var iconPosition: Int? = null
-        var colorPosition: Int? = null
-
-        category?.let {
-            iconPosition = viewModel.findIconPosition(it.icon)
-            colorPosition = viewModel.findColorPosition(category.icon)
-            categoryName.setText(it.name)
-        }
-
-
-        val selectionView = resources.getDrawable(R.drawable.edit_category_selection, null)
-        editCategoryIconRecycler.initialize(
-            position = iconPosition,
-            selectionView = selectionView
-        )
-        iconAdapter.submitList(viewModel.iconList)
-
-        editCategoryIconRecycler.setSelectionChangeCallback { selectedPosition ->
-            categoryIconPreview.setImageDrawable(
-                viewModel.getIconDrawable(viewModel.iconList[selectedPosition])
-            )
-        }
-
-        val leftArrow = resources.getDrawable(R.drawable.edit_category_left_arrow, null)
-        val rightArrow = resources.getDrawable(R.drawable.edit_category_right_arrow, null)
-        editCategoryColorRecycler.initialize(
-            position = colorPosition,
-            startArrow = leftArrow,
-            endArrow = rightArrow
-        )
-        colorAdapter.submitList(viewModel.colorList)
     }
 
 

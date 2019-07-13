@@ -1,8 +1,8 @@
-package com.axfex.moneybalance.domain.operation
+package com.axfex.moneybalance.domain.model.operation
 
-import com.axfex.moneybalance.domain.account.Account
-import com.axfex.moneybalance.domain.category.IncomeCategory
-import com.axfex.moneybalance.domain.currency.Currency
+import com.axfex.moneybalance.domain.model.account.Account
+import com.axfex.moneybalance.domain.model.category.IncomeCategory
+import com.axfex.moneybalance.domain.model.currency.Currency
 import java.math.BigDecimal
 import java.util.*
 

@@ -9,15 +9,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.axfex.moneybalance.R
-import com.axfex.moneybalance.domain.category.Category
-import com.axfex.moneybalance.domain.category.ExpenseCategory
-import com.axfex.moneybalance.domain.category.IncomeCategory
-import com.axfex.moneybalance.ui.category.CategoryTypesEnum
+import com.axfex.moneybalance.domain.model.category.CategoryView
 import kotlinx.android.synthetic.main.fragment_category_list_expense_item.view.*
 
 
 class CategoryListAdapter(val viewModel: CategoryListViewModel) :
-    ListAdapter<Category, CategoryListAdapter.ViewHolder>(CategoryDiffCallback()) {
+    ListAdapter<CategoryView, CategoryListAdapter.ViewHolder>(CategoryDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.fragment_category_list_expense_item, parent, false)
@@ -31,22 +28,22 @@ class CategoryListAdapter(val viewModel: CategoryListViewModel) :
 
 
     inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        fun bind(category: Category) {
+        fun bind(category: CategoryView) {
 
             itemView.categoryName.text = category.name
-            itemView.categoryIcon.setImageDrawable(viewModel.getIconDrawable(category.icon))
+            itemView.categoryIcon.setImageDrawable(viewModel.getIconDrawable(category.iconName))
             val drawable = itemView.categoryColor.drawable.mutate() as GradientDrawable
-            drawable.setColor(category.icon.backgroundColor)
+            drawable.setColor(category.color)
 
             itemView.setOnClickListener {
 
-                val type=when(category){
-                    is ExpenseCategory -> CategoryTypesEnum.EXPENSE_CATEGORY
-                    is IncomeCategory -> CategoryTypesEnum.INCOME_CATEGORY
-                    else -> throw Exception("unknown class found")
-                }
+//                val type=when(expenceCategory.type){
+//                    is ExpenseCategory -> CategoryType.EXPENSE_CATEGORY
+//                    is IncomeCategory -> CategoryType.INCOME_CATEGORY
+//                    else -> throw Exception("unknown class found")
+//                }
                 val direction =
-                    CategoryListFragmentDirections.actionCategoryListFragmentToEditCategoryFragment(category.id,type)
+                    CategoryListFragmentDirections.actionCategoryListFragmentToEditCategoryFragment(category.id,category.type)
 
                 itemView.findNavController().navigate(direction)
             }
@@ -54,12 +51,12 @@ class CategoryListAdapter(val viewModel: CategoryListViewModel) :
 
     }
 
-    class CategoryDiffCallback : DiffUtil.ItemCallback<Category>() {
-        override fun areContentsTheSame(oldItem: Category, newItem: Category): Boolean {
+    class CategoryDiffCallback : DiffUtil.ItemCallback<CategoryView>() {
+        override fun areContentsTheSame(oldItem: CategoryView, newItem: CategoryView): Boolean {
             return newItem == oldItem
         }
 
-        override fun areItemsTheSame(oldItem: Category, newItem: Category): Boolean {
+        override fun areItemsTheSame(oldItem: CategoryView, newItem: CategoryView): Boolean {
             return oldItem == newItem
         }
 

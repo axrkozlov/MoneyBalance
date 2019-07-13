@@ -1,11 +1,10 @@
-package com.axfex.moneybalance.data.source
+package com.axfex.moneybalance.domain.model.icon
 
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.util.Log
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import com.axfex.moneybalance.R
-import com.axfex.moneybalance.domain.icon.Icon
 import java.io.IOException
 
 class IconsManager(val context: Context) {
@@ -33,15 +32,15 @@ class IconsManager(val context: Context) {
             val iconNames = context.assets.list(this.ICONS_FOLDER)
 
             iconNames?.forEach {
-                val icon = Icon(it, 0)
-                icon.sortOrder = "(\\d+)".toRegex().find(it)?.groups?.get(0)?.value?.toInt()
+                val sortOrder = "(\\d+)".toRegex().find(it)?.groups?.get(0)?.value?.toInt() ?:99999
+                val icon = Icon(it, sortOrder)
                 icons.add(icon)
             }
 
         } catch (e: IOException) {
             Log.e("IconsManager", "loadIcons: ", e)
         }
-        return icons.sortedBy { it.sortOrder }
+        return icons
     }
 
     private fun inflateVectorDrawable(name : String) : Drawable {
@@ -49,8 +48,8 @@ class IconsManager(val context: Context) {
         return VectorDrawableCompat.createFromXml(context.resources, parser)
     }
 
-    fun getIconDrawable(icon: Icon): Drawable {
-        return inflateVectorDrawable(icon.name)
+    fun getIconDrawable(iconName: String): Drawable {
+        return inflateVectorDrawable(iconName)
     }
 
 

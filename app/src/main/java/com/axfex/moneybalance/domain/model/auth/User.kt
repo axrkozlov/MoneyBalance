@@ -1,4 +1,4 @@
-package com.axfex.moneybalance.domain.auth
+package com.axfex.moneybalance.domain.model.auth
 
 import com.google.firebase.auth.FirebaseUser
 

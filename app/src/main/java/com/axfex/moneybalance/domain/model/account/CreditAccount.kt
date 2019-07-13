@@ -1,7 +1,7 @@
-package com.axfex.moneybalance.domain.account
+package com.axfex.moneybalance.domain.model.account
 
-import com.axfex.moneybalance.domain.currency.Currency
-import com.axfex.moneybalance.domain.icon.Icon
+import com.axfex.moneybalance.domain.model.currency.Currency
+import com.axfex.moneybalance.domain.model.icon.Icon
 import java.math.BigDecimal
 import java.util.*
 import kotlin.collections.HashSet

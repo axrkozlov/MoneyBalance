@@ -5,6 +5,7 @@ import android.view.*
 import androidx.navigation.fragment.findNavController
 import com.axfex.moneybalance.R
 import com.axfex.moneybalance.core.AppFragment
+import com.axfex.moneybalance.domain.model.category.CategoryType
 import com.axfex.moneybalance.utils.subscribe
 import kotlinx.android.synthetic.main.fragment_account_list.*
 import javax.inject.Inject
@@ -34,19 +35,21 @@ class CategoryListFragment : AppFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        categoryListRecycler.adapter=adapter
-        viewModel.expenseCategoryList().subscribe(this){
-            adapter.expenseAdapter.submitList(it)
-        }
 
-        viewModel.incomeCategoryList().subscribe(this){
-            adapter.incomeAdapter.submitList(it)
+        viewModel.categoryList().subscribe(this){ list ->
+            val expenseCategoryList=list.filter{
+                it.type==CategoryType.EXPENSE_CATEGORY
+            }
+            adapter.expenseAdapter.submitList(expenseCategoryList)
+            val incomeCategoryList=list.filter{
+                it.type==CategoryType.INCOME_CATEGORY
+            }
+            adapter.incomeAdapter.submitList(incomeCategoryList)
+
         }
 
         categoryListPager.adapter= adapter
         tablayout.setupWithViewPager(categoryListPager)
-
-
 
     }
 

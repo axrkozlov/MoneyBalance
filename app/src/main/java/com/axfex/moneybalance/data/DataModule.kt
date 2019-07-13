@@ -8,9 +8,10 @@ import com.axfex.moneybalance.data.source.local.MoneyBalanceDataBase
 import com.axfex.moneybalance.data.source.local.LocalDataSource
 import com.axfex.moneybalance.data.source.local.UserPrefs
 import com.axfex.moneybalance.data.source.local.dao.CategoriesDao
-import com.axfex.moneybalance.data.source.IconsManager
+import com.axfex.moneybalance.data.source.local.dao.IconsDao
+import com.axfex.moneybalance.domain.model.icon.IconsManager
 import com.axfex.moneybalance.data.source.remote.RemoteDataSource
-import com.axfex.moneybalance.domain.auth.UserManager
+import com.axfex.moneybalance.domain.model.auth.UserManager
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -22,23 +23,24 @@ class DataModule {
 
     @Provides
     @Singleton
-    fun provideRepository(localDataSource: LocalDataSource, remoteDataSource: RemoteDataSource, iconsManager: IconsManager): Repository =
-        Repository(localDataSource,remoteDataSource,iconsManager)
+    fun provideRepository(
+        localDataSource: LocalDataSource,
+        remoteDataSource: RemoteDataSource,
+        iconsManager: IconsManager
+    ): Repository =
+        Repository(localDataSource, remoteDataSource, iconsManager)
 
     @Provides
     @Singleton
-    fun provideLocalDataSource(categoriesDao: CategoriesDao): LocalDataSource =
-        LocalDataSource(categoriesDao)
+    fun provideLocalDataSource(iconsDao: IconsDao,
+                               categoriesDao: CategoriesDao): LocalDataSource =
+        LocalDataSource(iconsDao, categoriesDao)
 
     @Provides
     @Singleton
-    fun provideRemoteDataSource( context:Context): RemoteDataSource =
+    fun provideRemoteDataSource(context: Context): RemoteDataSource =
         RemoteDataSource(context)
 
-    @Provides
-    @Singleton
-    fun provideIconsManager(context:Context) =
-        IconsManager(context)
 
 //    @Provides
 //    @Singleton
@@ -52,12 +54,10 @@ class DataModule {
 
     @Provides
     @Singleton
-    fun provideUserPrefs(app: App) =
-        UserPrefs(app.getSharedPreferences("UserPrefs", Context.MODE_PRIVATE))
+    fun provideIconsDao(database: MoneyBalanceDataBase) =
+        database.iconsDao()
 
-    @Provides
-    @Singleton
-    fun provideUserManager(userPrefs: UserPrefs) = UserManager(userPrefs)
+
 
     @Provides
     @Singleton
@@ -67,5 +67,6 @@ class DataModule {
             MoneyBalanceDataBase::class.java,
             "MoneyBalance.db"
         )
+            .fallbackToDestructiveMigration()
             .build()
 }

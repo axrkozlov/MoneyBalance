@@ -1,14 +1,7 @@
-package com.axfex.moneybalance.domain.operation
+package com.axfex.moneybalance.domain.model.operation
 
-import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.axfex.moneybalance.domain.account.Account
-import com.axfex.moneybalance.domain.category.ExpenseCategory
-import com.axfex.moneybalance.domain.currency.Currency
-import kotlinx.android.parcel.Parcelize
-import java.math.BigDecimal
-import java.util.*
 
 @Entity(tableName = "expenses")
 

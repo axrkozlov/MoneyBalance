@@ -1,9 +1,9 @@
-package com.axfex.moneybalance.domain.auth
+package com.axfex.moneybalance.domain.model.auth
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.axfex.moneybalance.data.source.local.UserPrefs
-import com.axfex.moneybalance.domain.auth.User.*
+import com.axfex.moneybalance.domain.model.auth.User.*
 import com.google.firebase.auth.*
 import java.util.*
 import kotlin.coroutines.resume

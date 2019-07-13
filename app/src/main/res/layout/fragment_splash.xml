@@ -3,8 +3,7 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context=".ui.start.splash.SplashFragment"
-android:background="@color/colorPrimary">
+             tools:context=".ui.start.splash.SplashFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <ImageView
@@ -12,8 +11,7 @@ android:background="@color/colorPrimary">
             android:layout_height="300dp"
             android:layout_gravity="center"
             android:src="@drawable/splash_logo"
-            android:layout_margin="46dp"
-    android:background="@color/transparent"/>
+            android:layout_margin="46dp"/>
 
     <TextView android:layout_width="wrap_content"
               android:layout_height="wrap_content"

@@ -7,8 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.axfex.moneybalance.R
-import com.axfex.moneybalance.domain.account.Account
-import com.axfex.moneybalance.domain.category.Category
+import com.axfex.moneybalance.domain.model.account.Account
 
 
 class AccountListAdapter(val viewModel: AccountListViewModel) :
