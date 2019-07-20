@@ -6,8 +6,7 @@ import com.axfex.moneybalance.domain.model.icon.Icon
 
 class CategoryListViewModel(val repo:Repository) : ViewModel() {
 
-    fun expenseCategoryList()=repo.expenseCategoryList()
-    fun incomeCategoryList()=repo.incomeCategoryList()
+
 
     fun getIconDrawable(iconName: String) = repo.getIconDrawable(iconName)
 

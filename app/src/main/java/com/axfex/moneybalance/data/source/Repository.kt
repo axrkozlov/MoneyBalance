@@ -3,6 +3,7 @@ package com.axfex.moneybalance.data.source
 import android.util.Log
 import com.axfex.moneybalance.data.source.local.LocalDataSource
 import com.axfex.moneybalance.data.source.remote.RemoteDataSource
+import com.axfex.moneybalance.domain.model.account.CreditAccount
 import com.axfex.moneybalance.domain.model.icon.IconsManager
 import com.axfex.moneybalance.domain.model.category.ExpenseCategory
 import com.axfex.moneybalance.domain.model.category.IncomeCategory
@@ -39,6 +40,8 @@ class Repository(val lds: LocalDataSource, val rds: RemoteDataSource, val iconsM
 
     fun iconList()=lds.iconList()
 
+    fun categoryList()=lds.categoryList()
+
     fun expenseCategoryList() = lds.expenseCategoryList()
     fun incomeCategoryList() = lds.incomeCategoryList()
 
@@ -52,7 +55,15 @@ class Repository(val lds: LocalDataSource, val rds: RemoteDataSource, val iconsM
     fun deleteIncomeCategory(categoryId: String) =  lds.deleteIncomeCategory(categoryId)
     fun deleteExpenseCategory(categoryId: String) =  lds.deleteExpenseCategory(categoryId)
 
-    fun categoryList()=lds.categoryList()
+    fun accountList()=lds.accountList()
+
+    fun creditAccountList() = lds.creditAccountList()
+
+    fun creditAccount(accountId: String) = lds.creditAccount(accountId)
+
+    fun insertCreditAccount(account: CreditAccount) = lds.insertCreditAccount(account)
+
+    fun deleteCreditAccount(accountId: String) =  lds.deleteCreditAccount(accountId)
 
 
 

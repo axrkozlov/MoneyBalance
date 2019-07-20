@@ -1,4 +1,4 @@
-package com.axfex.moneybalance.utils
+package com.axfex.moneybalance.ui.widgets
 
 
 import android.content.Context
@@ -6,7 +6,6 @@ import android.graphics.Canvas
 import android.util.AttributeSet
 import android.view.ViewTreeObserver
 import androidx.recyclerview.widget.LinearSnapHelper
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import android.graphics.drawable.Drawable
 import com.azoft.carousellayoutmanager.CarouselLayoutManager

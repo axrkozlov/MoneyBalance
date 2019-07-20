@@ -1,4 +1,4 @@
-package com.axfex.moneybalance
+package com.axfex.moneybalance.ui
 
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity

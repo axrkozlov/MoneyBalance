@@ -28,9 +28,22 @@
         android:label="Category"
         tools:layout="@layout/fragment_category_dialog" />
 
+    <dialog
+        android:id="@+id/accountDialogFragment"
+        android:name="com.axfex.moneybalance.ui.account.dialog.AccountDialogFragment"
+        android:label="Category"
+        tools:layout="@layout/fragment_account_dialog" />
     <action
         android:id="@+id/action_show_categoryDialog"
         app:destination="@+id/categoryDialogFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
+    <action
+        android:id="@+id/action_show_accountDialog"
+        app:destination="@+id/accountDialogFragment"
         app:enterAnim="@anim/nav_default_enter_anim"
         app:exitAnim="@anim/nav_default_exit_anim"
         app:popEnterAnim="@anim/nav_default_pop_enter_anim"
@@ -65,7 +78,7 @@
     <fragment
         android:id="@+id/editCategoryFragment"
         android:name="com.axfex.moneybalance.ui.category.edit.EditCategoryFragment"
-        android:label="edit category"
+        android:label="edit categoryList"
         tools:layout="@layout/fragment_edit_category" >
         <argument
             android:name="categoryId"
@@ -99,9 +112,30 @@
     </fragment>
     <fragment
         android:id="@+id/accountListFragment"
-        android:name="com.axfex.moneybalance.ui.account.AccountListFragment"
+        android:name="com.axfex.moneybalance.ui.account.list.AccountListFragment"
         android:label="fragment_account_list"
-        tools:layout="@layout/fragment_account_list" />
+        tools:layout="@layout/fragment_account_list"
+        >
+        <action
+            android:id="@+id/action_accountListFragment_to_editAccountFragment"
+            app:destination="@id/editAccountFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/editAccountFragment"
+        android:name="com.axfex.moneybalance.ui.account.edit.EditAccountFragment"
+        android:label="EditAccountFragment" >
+        <argument
+            android:name="accountId"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null"/>
+    </fragment>
     <!--<action-->
         <!--android:id="@+id/action_to_editCategoryFragment"-->
         <!--app:destination="@id/editCategoryFragment"-->

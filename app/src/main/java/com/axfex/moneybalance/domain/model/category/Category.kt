@@ -1,13 +1,13 @@
 package com.axfex.moneybalance.domain.model.category
 
 import androidx.room.*
-import com.axfex.moneybalance.domain.converters.TypesConverter
+import com.axfex.moneybalance.domain.converters.CategoryTypeConverter
 import java.util.*
 
-@TypeConverters(TypesConverter::class)
+@TypeConverters(CategoryTypeConverter::class)
 abstract class Category(
     @PrimaryKey
-    open val id: String= UUID.randomUUID().toString(),
+    open val id: String,
     open val name:String,
     val iconName: String,
     val color : Int,

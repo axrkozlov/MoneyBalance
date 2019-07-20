@@ -4,10 +4,10 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.TypeConverters
-import com.axfex.moneybalance.domain.converters.TypesConverter
+import com.axfex.moneybalance.domain.converters.CategoryTypeConverter
 import com.axfex.moneybalance.domain.model.icon.Icon
 
-@TypeConverters(TypesConverter::class)
+@TypeConverters(CategoryTypeConverter::class)
 @Entity(
     tableName = "incomeCategory",
     foreignKeys = [
@@ -18,7 +18,7 @@ import com.axfex.moneybalance.domain.model.icon.Icon
             onDelete = ForeignKey.NO_ACTION
         )
     ],
-    indices = [Index("name")]
+    indices = [Index("iconName")]
 )
 class IncomeCategory(
     id: String,

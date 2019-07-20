@@ -41,11 +41,11 @@ class BalanceFragment : AppFragment() {
 
 
         addExpense.setOnClickListener{
-            findNavController().navigate(R.id.action_to_accountListFragment)
+            findNavController().navigate(R.id.action_to_addOperationFragment)
         }
 
         addIncome.setOnClickListener{
-            findNavController().navigate(R.id.action_to_categoryListFragment)
+            findNavController().navigate(R.id.action_to_addOperationFragment)
         }
     }
 

@@ -20,7 +20,7 @@ class BalanceAdapter: RecyclerView.Adapter<BalanceAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        holder.itemView.setOnClickListener {  findNavController(holder.itemView).navigate(R.id.action_show_categoryDialog) }
+        holder.itemView.setOnClickListener {   }
     }
 
 

@@ -24,7 +24,7 @@ class EditCategoryIconAdapter(val viewModel: EditCategoryViewModel) :
     private var selectionCallback: ((selectedIconName: String) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_edit_category_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_edit_category_icon_item, parent, false)
         return ViewHolder(view)
     }
 
@@ -97,7 +97,7 @@ class EditCategoryIconAdapter(val viewModel: EditCategoryViewModel) :
         fun bind(icon: Icon, position: Int) {
 
 
-            val image = view.findViewById<ImageView>(R.id.categoryIconPreview)
+            val image = view.findViewById<ImageView>(R.id.categoryIcon)
             val name = view.findViewById<TextView>(R.id.categoryIconName)
 
             itemView.setOnClickListener {

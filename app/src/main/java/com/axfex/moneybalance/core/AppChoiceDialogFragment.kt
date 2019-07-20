@@ -31,7 +31,7 @@ abstract class AppChoiceDialogFragment : BottomSheetDialogFragment() {
         val width = (resources.displayMetrics.heightPixels * 0.90).toInt()
         dialog.window?.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
 
-        dialog.window?.setBackgroundDrawable(ColorDrawable(0));
+        dialog.window?.setBackgroundDrawable(ColorDrawable(0))
 
         dialog.window?.setLayout(width, height)
         return dialog

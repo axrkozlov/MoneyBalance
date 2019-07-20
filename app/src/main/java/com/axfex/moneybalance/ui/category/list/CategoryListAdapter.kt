@@ -9,15 +9,15 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.axfex.moneybalance.R
-import com.axfex.moneybalance.domain.model.category.CategoryView
-import kotlinx.android.synthetic.main.fragment_category_list_expense_item.view.*
+import com.axfex.moneybalance.domain.model.category.CategoryListView
+import kotlinx.android.synthetic.main.fragment_category_list_item.view.*
 
 
 class CategoryListAdapter(val viewModel: CategoryListViewModel) :
-    ListAdapter<CategoryView, CategoryListAdapter.ViewHolder>(CategoryDiffCallback()) {
+    ListAdapter<CategoryListView, CategoryListAdapter.ViewHolder>(CategoryDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.fragment_category_list_expense_item, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.fragment_category_list_item, parent, false)
         return ViewHolder(view)
     }
 
@@ -28,7 +28,7 @@ class CategoryListAdapter(val viewModel: CategoryListViewModel) :
 
 
     inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        fun bind(category: CategoryView) {
+        fun bind(category: CategoryListView) {
 
             itemView.categoryName.text = category.name
             itemView.categoryIcon.setImageDrawable(viewModel.getIconDrawable(category.iconName))
@@ -36,12 +36,6 @@ class CategoryListAdapter(val viewModel: CategoryListViewModel) :
             drawable.setColor(category.color)
 
             itemView.setOnClickListener {
-
-//                val type=when(expenceCategory.type){
-//                    is ExpenseCategory -> CategoryType.EXPENSE_CATEGORY
-//                    is IncomeCategory -> CategoryType.INCOME_CATEGORY
-//                    else -> throw Exception("unknown class found")
-//                }
                 val direction =
                     CategoryListFragmentDirections.actionCategoryListFragmentToEditCategoryFragment(category.id,category.type)
 
@@ -51,12 +45,12 @@ class CategoryListAdapter(val viewModel: CategoryListViewModel) :
 
     }
 
-    class CategoryDiffCallback : DiffUtil.ItemCallback<CategoryView>() {
-        override fun areContentsTheSame(oldItem: CategoryView, newItem: CategoryView): Boolean {
+    class CategoryDiffCallback : DiffUtil.ItemCallback<CategoryListView>() {
+        override fun areContentsTheSame(oldItem: CategoryListView, newItem: CategoryListView): Boolean {
             return newItem == oldItem
         }
 
-        override fun areItemsTheSame(oldItem: CategoryView, newItem: CategoryView): Boolean {
+        override fun areItemsTheSame(oldItem: CategoryListView, newItem: CategoryListView): Boolean {
             return oldItem == newItem
         }
 

@@ -6,9 +6,7 @@ import com.axfex.moneybalance.data.source.Repository
 
 class BalanceViewModel(repo:Repository) : ViewModel() {
     init {
-        Log.i("BalanceViewModel", "BalanceViewModel: $repo")
         repo.getAmounts()
     }
 
-    // TODO: Implement the ViewModel
 }

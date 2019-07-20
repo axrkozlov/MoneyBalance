@@ -2,14 +2,13 @@ package com.axfex.moneybalance.domain.model.category
 
 import androidx.room.Entity
 import androidx.room.ForeignKey
-import androidx.room.ForeignKey.CASCADE
 import androidx.room.ForeignKey.NO_ACTION
 import androidx.room.Index
 import androidx.room.TypeConverters
-import com.axfex.moneybalance.domain.converters.TypesConverter
+import com.axfex.moneybalance.domain.converters.CategoryTypeConverter
 import com.axfex.moneybalance.domain.model.icon.Icon
 
-@TypeConverters(TypesConverter::class)
+@TypeConverters(CategoryTypeConverter::class)
 @Entity(
     tableName = "expenseCategory",
     foreignKeys = [
@@ -20,7 +19,7 @@ import com.axfex.moneybalance.domain.model.icon.Icon
             onDelete = NO_ACTION
         )
     ],
-    indices = [Index("name")]
+    indices = [Index("iconName")]
 )
 class ExpenseCategory(
     id: String,

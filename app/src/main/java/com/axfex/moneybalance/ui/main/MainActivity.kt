@@ -1,4 +1,4 @@
-package com.axfex.moneybalance
+package com.axfex.moneybalance.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,16 +8,19 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.Navigation.findNavController
-import androidx.navigation.get
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.axfex.moneybalance.R
+import com.axfex.moneybalance.core.AppActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppActivity() {
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,11 +31,13 @@ class MainActivity : AppCompatActivity() {
         setupAppBar()
 
     }
+
+
     private fun setupAppBar() {
         setSupportActionBar(toolbar)
 
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.balanceFragment,R.id.profileFragment),
+            setOf(R.id.balanceFragment, R.id.profileFragment),
             drawer_layout
         )
 

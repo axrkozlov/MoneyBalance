@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.axfex.moneybalance.R
-import com.axfex.moneybalance.domain.model.icon.Icon
 import com.azoft.carousellayoutmanager.CarouselLayoutManager
 
 class EditCategoryColorAdapter: ListAdapter<Int,EditCategoryColorAdapter.ViewHolder>(IconColorDiffCallback()) {
+
 
     private lateinit var recyclerView: RecyclerView
     private var pendingSelectionColor: Int = -1
@@ -66,7 +66,7 @@ class EditCategoryColorAdapter: ListAdapter<Int,EditCategoryColorAdapter.ViewHol
 
     }
 
-    class ViewHolder(val view : View): RecyclerView.ViewHolder(view){
+    inner class ViewHolder(val view : View): RecyclerView.ViewHolder(view){
         fun bind(iconColor: Int){
 
             val drawable= view.findViewById<ImageView>(R.id.categoryColor).drawable.mutate() as GradientDrawable
@@ -80,7 +80,7 @@ class EditCategoryColorAdapter: ListAdapter<Int,EditCategoryColorAdapter.ViewHol
         }
 
         override fun areItemsTheSame(oldItem: Int, newItem: Int): Boolean {
-            return oldItem.equals(newItem)
+            return oldItem == newItem
         }
 
     }

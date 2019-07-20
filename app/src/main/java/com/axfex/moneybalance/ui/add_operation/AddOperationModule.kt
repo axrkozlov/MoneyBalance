@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.axfex.moneybalance.di.ViewModelKey
 import com.axfex.moneybalance.data.source.Repository
+import com.axfex.moneybalance.ui.main.MainViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.android.ContributesAndroidInjector
@@ -38,6 +39,11 @@ abstract class AddOperationModule {
         @Provides
         fun provideViewModel(factory: ViewModelProvider.Factory, target: AddOperationFragment) =
             ViewModelProviders.of(target, factory).get(AddOperationViewModel::class.java)
+
+        @Provides
+        fun provideMainViewModel(target: AddOperationFragment) = target.activity?.run {
+            ViewModelProviders.of(this)[MainViewModel::class.java]
+        } ?: throw Exception("Invalid Activity")
     }
 
 }

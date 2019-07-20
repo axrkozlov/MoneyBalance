@@ -1,4 +1,4 @@
-package com.axfex.moneybalance.ui.account
+package com.axfex.moneybalance.ui.account.edit
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -12,39 +12,41 @@ import dagger.multibindings.IntoMap
 
 
 @Module(includes = [
-    AccountListModule.ProvideViewModel::class
+    EditAccountModule.ProvideViewModel::class
 ])
-abstract class AccountListModule {
+abstract class EditAccountModule {
 
 
     @ContributesAndroidInjector(modules = [InjectViewModel::class,
-    AccountListModule.InjectAdapter::class])
-    abstract fun bind(): AccountListFragment
+    EditAccountModule.InjectAdapter::class])
+    abstract fun bind(): EditAccountFragment
 
     @Module
     class ProvideViewModel {
         @Provides
         @IntoMap
-        @ViewModelKey(AccountListViewModel::class)
+        @ViewModelKey(EditAccountViewModel::class)
         fun provideViewModel(repo: Repository): ViewModel =
-            AccountListViewModel(repo)
+            EditAccountViewModel(repo)
     }
 
     @Module
     class InjectViewModel {
 
         @Provides
-        fun provideViewModel(factory: ViewModelProvider.Factory, target: AccountListFragment) =
-            ViewModelProviders.of(target, factory).get(AccountListViewModel::class.java)
+        fun provideViewModel(factory: ViewModelProvider.Factory, target: EditAccountFragment) =
+            ViewModelProviders.of(target, factory).get(EditAccountViewModel::class.java)
     }
 
     @Module
     class InjectAdapter {
 
         @Provides
-        fun  provideAdapter(viewModel: AccountListViewModel) = AccountListAdapter(viewModel)
+        fun  provideIconAdapter(viewModel:EditAccountViewModel) = EditAccountIconAdapter(viewModel)
 
-
+        @Provides
+        fun  provideColorAdapter() = EditAccountColorAdapter()
     }
+
 
 }

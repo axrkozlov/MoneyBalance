@@ -1,16 +1,13 @@
-package com.axfex.moneybalance.utils
+package com.axfex.moneybalance.ui.widgets
 
 
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
-import android.os.Bundle
 import android.util.AttributeSet
 import android.view.ViewTreeObserver
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.GridLayoutManager
-import kotlinx.android.synthetic.main.fragment_edit_category.*
 import kotlin.math.max
 
 

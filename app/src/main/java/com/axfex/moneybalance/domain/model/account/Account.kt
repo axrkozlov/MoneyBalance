@@ -1,22 +1,21 @@
 package com.axfex.moneybalance.domain.model.account
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import com.axfex.moneybalance.domain.model.currency.Currency
-import com.axfex.moneybalance.domain.model.icon.Icon
-import java.math.BigDecimal
-import java.util.*
 
-@Entity
+import com.axfex.moneybalance.domain.model.currency.Currency
+
+import java.math.BigDecimal
+
+
+
 abstract class Account(
-    @PrimaryKey
-    open val id: String= UUID.randomUUID().toString(),
+
+    open val id: String,
     open val name: String,
-    open val icon: Icon,
+    open val iconName: String,
+    open val color: Int,
     open val owner: String,
     open val balance: BigDecimal,
-    open val currency: Currency,
-    open val creationDate: Date
+    open val currency: Currency
 )
 
 //{

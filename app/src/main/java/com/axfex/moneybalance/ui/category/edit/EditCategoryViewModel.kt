@@ -116,24 +116,6 @@ class EditCategoryViewModel(val repo: Repository) : ViewModel(), CoroutineScope 
 
     fun getIconDrawable(iconName: String) = repo.getIconDrawable(iconName)
 
-
-
-
-    fun findIconPosition(findIconName: String): Int? {
-        return iconList.value?.indexOfFirst { findIconName == it.name }
-//        return iconList.find {findIcon.name == it.name}?.sortOrder
-    }
-
-    fun findColorPosition(color: Int): Int? {
-        return colorList.indexOfFirst { color == it }
-//        return iconList.find {findIcon.name == it.name}?.sortOrder
-    }
-
-    sealed class ViewState {
-        object ExpenseCategories : ViewState()
-        object IncomeCategories : ViewState()
-    }
-
     sealed class Message {
         object EmptyName : Message()
     }

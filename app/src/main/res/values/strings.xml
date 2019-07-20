@@ -29,10 +29,11 @@
     <string name="add">add</string>
     <string name="done">Done</string>
     <string name="menu_balance">Balance</string>
-    <string name="editCategoryEmptyName">Please, type in category name</string>
+    <string name="editCategoryEmptyName">Please, type in categoryList name</string>
     <string name="remove">remove</string>
     <string name="bt_ok">ok</string>
     <string name="bt_cancel">cancel</string>
     <string name="categoryListPageExpenceCategories">expence</string>
     <string name="categoryListPageIncomeCategories">income</string>
+    <string name="menu_accounts">Accounts</string>
 </resources>

@@ -7,7 +7,7 @@ import com.axfex.moneybalance.R
 import com.axfex.moneybalance.core.AppFragment
 import com.axfex.moneybalance.domain.model.category.CategoryType
 import com.axfex.moneybalance.utils.subscribe
-import kotlinx.android.synthetic.main.fragment_account_list.*
+import kotlinx.android.synthetic.main.fragment_category_list_pager.*
 import javax.inject.Inject
 
 class CategoryListFragment : AppFragment() {
@@ -65,8 +65,6 @@ class CategoryListFragment : AppFragment() {
                 findNavController().navigate(direction)
 //                findNavController().navigate(R.id.action_categoryListFragment_to_editCategoryFragment)
 
-
-                
             }
         }
 

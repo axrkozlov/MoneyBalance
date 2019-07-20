@@ -21,7 +21,7 @@
         <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
         <item name="android:windowActionModeOverlay">true</item>
         <item name="android:windowCloseOnTouchOutside">true</item>
-        <item name="android:backgroundDimAmount">0.1</item>
+        <item name="android:backgroundDimAmount">0.3</item>
         <item name="materialButtonStyle">@style/Button.Round</item>
 
     </style>

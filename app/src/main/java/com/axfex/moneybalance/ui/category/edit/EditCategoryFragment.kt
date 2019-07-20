@@ -6,12 +6,10 @@ import android.util.Log
 import android.view.*
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AlertDialog
-import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.axfex.moneybalance.R
 import com.axfex.moneybalance.core.AppFragment
-import com.axfex.moneybalance.domain.model.category.Category
 import com.axfex.moneybalance.domain.model.category.CategoryType
 import com.axfex.moneybalance.utils.hideKeyboard
 import com.axfex.moneybalance.utils.showKeyboard
@@ -76,10 +74,10 @@ class EditCategoryFragment : AppFragment() {
     }
 
 
-    fun setupUI() {
+    private fun setupUI() {
         editCategoryIconRecycler.adapter = iconAdapter
         editCategoryColorRecycler.adapter = colorAdapter
-        val selectionView = resources.getDrawable(R.drawable.edit_category_selection, null)
+        val selectionView = resources.getDrawable(R.drawable.icon_recyclerview_selection, null)
         editCategoryIconRecycler.initialize(
             selectionView = selectionView
         )
@@ -90,7 +88,7 @@ class EditCategoryFragment : AppFragment() {
 //        }
 
         iconAdapter.setSelectionChangeCallback { name ->
-            categoryIconPreview.setImageDrawable(
+            categoryIcon.setImageDrawable(
                 viewModel.getIconDrawable(name)
 
             )
@@ -98,8 +96,8 @@ class EditCategoryFragment : AppFragment() {
 
         }
 
-        val leftArrow = resources.getDrawable(R.drawable.edit_category_left_arrow, null)
-        val rightArrow = resources.getDrawable(R.drawable.edit_category_right_arrow, null)
+        val leftArrow = resources.getDrawable(R.drawable.color_recyclerview_left_arrow, null)
+        val rightArrow = resources.getDrawable(R.drawable.color_recyclerview_right_arrow, null)
         editCategoryColorRecycler.initialize(
             startArrow = leftArrow,
             endArrow = rightArrow

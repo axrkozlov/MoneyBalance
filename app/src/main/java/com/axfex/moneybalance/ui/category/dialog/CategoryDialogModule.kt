@@ -3,14 +3,13 @@ package com.axfex.moneybalance.ui.category.dialog
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.RecyclerView
 import com.axfex.moneybalance.di.ViewModelKey
 import com.axfex.moneybalance.data.source.Repository
+import com.axfex.moneybalance.ui.main.MainViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.android.ContributesAndroidInjector
 import dagger.multibindings.IntoMap
-import kotlin.reflect.KClass
 
 
 @Module(includes = [
@@ -38,13 +37,17 @@ abstract class CategoryDialogModule {
         fun provideViewModel(factory: ViewModelProvider.Factory, target: CategoryDialogFragment) =
             ViewModelProviders.of(target, factory).get(CategoryDialogViewModel::class.java)
 
+        @Provides
+        fun provideMainViewModel(target: CategoryDialogFragment) = target.activity?.run {
+            ViewModelProviders.of(this)[MainViewModel::class.java]
+        } ?: throw Exception("Invalid Activity")
     }
 
     @Module
     class InjectAdapter {
 
         @Provides
-        fun  provideAdapter() = CategoryDialogAdapter()
+        fun  provideAdapter(viewModel: CategoryDialogViewModel,mainViewModel: MainViewModel) = CategoryDialogAdapter(viewModel,mainViewModel)
 
 
     }

@@ -14,6 +14,10 @@
             android:id="@+id/categoryListFragment"
             android:icon="@drawable/nav_bar_categories"
             android:title="@string/menu_categories" />
+        <item
+            android:id="@+id/accountListFragment"
+            android:icon="@drawable/nav_bar_categories"
+            android:title="@string/menu_accounts" />
     </group>
 
     <item android:title="Account" >

@@ -28,5 +28,5 @@
     android:id="@+id/categoryListPager"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.account.AccountListFragment"/>
+    tools:context=".ui.account.list.AccountListFragment"/>
 </LinearLayout>
