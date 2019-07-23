@@ -1,4 +1,4 @@
-package com.axfex.moneybalance.ui.balance
+package com.axfex.moneybalance.ui.operation.list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -13,39 +13,41 @@ import dagger.multibindings.IntoMap
 
 @Module(
     includes = [
-        BalanceModule.ProvideViewModel::class
+        OperationListModule.ProvideViewModel::class
     ]
 )
-abstract class BalanceModule {
+abstract class OperationListModule {
 
 
     @ContributesAndroidInjector(
         modules = [InjectViewModel::class,
-            BalanceModule.InjectAdapter::class]
+            InjectAdapter::class]
     )
-    abstract fun bind(): BalanceFragment
+    abstract fun bind(): OperationListFragment
 
     @Module
     class ProvideViewModel {
         @Provides
         @IntoMap
-        @ViewModelKey(BalanceViewModel::class)
-        fun provideViewModel(repo: Repository): ViewModel = BalanceViewModel(repo)
+        @ViewModelKey(OperationListViewModel::class)
+        fun provideViewModel(repo: Repository): ViewModel =
+            OperationListViewModel(repo)
     }
 
     @Module
     class InjectViewModel {
 
         @Provides
-        fun provideViewModel(factory: ViewModelProvider.Factory, target: BalanceFragment) =
-            ViewModelProviders.of(target, factory).get(BalanceViewModel::class.java)
+        fun provideViewModel(factory: ViewModelProvider.Factory, target: OperationListFragment) =
+            ViewModelProviders.of(target, factory).get(OperationListViewModel::class.java)
     }
 
     @Module
     class InjectAdapter {
 
         @Provides
-        fun provideAdapter() = BalanceAdapter()
+        fun provideAdapter(viewModel: OperationListViewModel) =
+            OperationListAdapter(viewModel)
 
 
     }

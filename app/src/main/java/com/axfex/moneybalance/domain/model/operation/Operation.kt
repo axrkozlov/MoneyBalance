@@ -1,21 +1,40 @@
 package com.axfex.moneybalance.domain.model.operation
 
-
-import androidx.room.PrimaryKey
+import androidx.room.*
+import com.axfex.moneybalance.domain.converters.MoneyTypeConverter
+import com.axfex.moneybalance.domain.converters.OperationTypeConverter
 import com.axfex.moneybalance.domain.model.account.Account
 import com.axfex.moneybalance.domain.model.category.Category
-import com.axfex.moneybalance.domain.model.currency.Currency
 import java.math.BigDecimal
-import java.util.*
 
 
-abstract class Operation(
-    @PrimaryKey
-    open val id: String= UUID.randomUUID().toString(),
-    open val account: Account,
-    open val amount: BigDecimal,
-    open val currency: Currency =account.currency,
-    open val date: Date,
-    open val note: String?=null,
-    open val category: Category?=null
+@TypeConverters(OperationTypeConverter::class, MoneyTypeConverter::class)
+@Entity(tableName = "operation",
+     foreignKeys = [
+          ForeignKey(
+               entity = Account::class,
+               parentColumns = ["id"],
+               childColumns = ["accountId"],
+               onDelete = ForeignKey.NO_ACTION
+          ),
+          ForeignKey(
+               entity = Category::class,
+               parentColumns = ["id"],
+               childColumns = ["categoryId"],
+               onDelete = ForeignKey.NO_ACTION
+          )
+     ],
+     indices = [Index("accountId"),Index("categoryId")]
+)
+data class Operation(
+     @PrimaryKey
+     val id: String,
+     val accountId: String,
+     val amount: BigDecimal,
+//     val currency: Currency,
+//     val date: Date,
+//     val transferAccountId: String,
+     val note: String?=null,
+     val categoryId: String,
+     val type: OperationType
 )

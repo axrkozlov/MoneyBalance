@@ -4,10 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 import androidx.room.OnConflictStrategy.REPLACE
 import com.axfex.moneybalance.domain.model.account.AccountListView
-import com.axfex.moneybalance.domain.model.account.CreditAccount
-import com.axfex.moneybalance.domain.model.category.CategoryListView
-import com.axfex.moneybalance.domain.model.category.ExpenseCategory
-import com.axfex.moneybalance.domain.model.category.IncomeCategory
+import com.axfex.moneybalance.domain.model.account.Account
 
 @Dao
 interface AccountsDao{
@@ -15,17 +12,14 @@ interface AccountsDao{
     @Query("SELECT * FROM AccountListView ")
     fun accountList(): LiveData<List<AccountListView>>
 
-    @Query("SELECT * FROM creditAccount")
-    fun creditAccountList(): LiveData<List<CreditAccount>>
-
-    @Query("Select * FROM creditAccount where id = :accountId")
-    fun creditAccount(accountId: String): LiveData<CreditAccount>
+    @Query("Select * FROM account where id = :accountId")
+    fun account(accountId: String): LiveData<Account>
 
 
     @Insert(onConflict = REPLACE)
-    fun insertCreditAccount(vararg account: CreditAccount)
+    fun insertAccount(vararg account: Account)
 
-    @Query("DELETE FROM creditAccount where id = :accountId")
-    fun deleteCreditAccount(accountId: String)
+    @Query("DELETE FROM account where id = :accountId")
+    fun deleteAccount(accountId: String)
 
 }

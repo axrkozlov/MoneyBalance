@@ -1,11 +1,13 @@
-package com.axfex.moneybalance.ui.category.dialog
+package com.axfex.moneybalance.ui.operation.list
 
 import androidx.lifecycle.ViewModel;
 import com.axfex.moneybalance.data.source.Repository
 
-class CategoryDialogViewModel(val repo: Repository) : ViewModel() {
-    fun categoryList()=repo.categoryList()
+class OperationListViewModel(val repo:Repository) : ViewModel() {
 
     fun getIconDrawable(iconName: String) = repo.getIconDrawable(iconName)
+
+    fun operationList()=repo.operationList()
+
 
 }

@@ -9,9 +9,9 @@
     <fragment
 
         android:id="@+id/balanceFragment"
-        android:name="com.axfex.moneybalance.ui.balance.BalanceFragment"
+        android:name="com.axfex.moneybalance.ui.operation.list.OperationListFragment"
         android:label="fragment_balance"
-        tools:layout="@layout/fragment_balance">
+        tools:layout="@layout/fragment_operation_list">
 
     </fragment>
     <fragment
@@ -26,7 +26,9 @@
         android:id="@+id/categoryDialogFragment"
         android:name="com.axfex.moneybalance.ui.category.dialog.CategoryDialogFragment"
         android:label="Category"
-        tools:layout="@layout/fragment_category_dialog" />
+        tools:layout="@layout/fragment_category_dialog" >
+        <argument android:name="categoryType" app:argType="com.axfex.moneybalance.domain.model.category.CategoryType"/>
+    </dialog>
 
     <dialog
         android:id="@+id/accountDialogFragment"
@@ -92,9 +94,9 @@
     </fragment>
     <fragment
         android:id="@+id/addOperationFragment"
-        android:name="com.axfex.moneybalance.ui.add_operation.AddOperationFragment"
+        android:name="com.axfex.moneybalance.ui.operation.edit.EditOperationFragment"
         android:label="@string/addOperationFragmentLabel"
-        tools:layout="@layout/fragment_add_operation" />
+        tools:layout="@layout/fragment_edit_operation" />
     <fragment
         android:id="@+id/categoryListFragment"
         android:name="com.axfex.moneybalance.ui.category.list.CategoryListFragment"

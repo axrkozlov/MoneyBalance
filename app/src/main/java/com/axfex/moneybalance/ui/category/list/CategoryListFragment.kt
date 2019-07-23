@@ -37,10 +37,10 @@ class CategoryListFragment : AppFragment() {
 
 
         viewModel.categoryList().subscribe(this){ list ->
-            val expenseCategoryList=list.filter{
+            val categoryList=list.filter{
                 it.type==CategoryType.EXPENSE_CATEGORY
             }
-            adapter.expenseAdapter.submitList(expenseCategoryList)
+            adapter.expenseAdapter.submitList(categoryList)
             val incomeCategoryList=list.filter{
                 it.type==CategoryType.INCOME_CATEGORY
             }

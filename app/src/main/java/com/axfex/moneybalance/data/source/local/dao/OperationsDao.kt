@@ -3,11 +3,8 @@ package com.axfex.moneybalance.data.source.local.dao
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import androidx.room.OnConflictStrategy.REPLACE
-import com.axfex.moneybalance.domain.model.account.AccountListView
-import com.axfex.moneybalance.domain.model.account.CreditAccount
-import com.axfex.moneybalance.domain.model.category.CategoryListView
-import com.axfex.moneybalance.domain.model.category.ExpenseCategory
-import com.axfex.moneybalance.domain.model.category.IncomeCategory
+import com.axfex.moneybalance.domain.model.operation.Operation
+import com.axfex.moneybalance.domain.model.operation.OperationListView
 
 @Dao
 interface OperationsDao{
@@ -16,14 +13,14 @@ interface OperationsDao{
 //    fun accountList(): LiveData<List<AccountListView>>
 //
 //    @Query("Select * FROM creditAccount where id = :accountId")
-//    fun creditAccount(accountId: String): LiveData<CreditAccount>
+//    fun creditAccount(accountId: String): LiveData<Account>
 //
 //
 //    @Insert(onConflict = REPLACE)
-//    fun insertCreditAccount(account: CreditAccount): Long
+//    fun insertAccount(account: Account): Long
 //
 //    @Query("DELETE FROM creditAccount where id = :accountId")
-//    fun deleteCreditAccount(accountId: String)
+//    fun deleteAccount(accountId: String)
 //
 //
 //
@@ -33,21 +30,25 @@ interface OperationsDao{
 
 
 
-    @Query("SELECT * FROM incomeCategory")
-    fun incomeList(): LiveData<List<CategoryListView>>
+//    @Query("SELECT * FROM incomeCategory")
+//    fun incomeList(): LiveData<List<CategoryListView>>
 
-    @Query("Select * FROM expenseCategory where id = :categoryId")
-    fun expense(categoryId: String): LiveData<ExpenseCategory>
+//    @Query("Select * FROM category where id = :categoryId")
+//    fun expense(categoryId: String): LiveData<Category>
 
-    @Query("Select * FROM incomeCategory where id = :categoryId")
-    fun income(categoryId: String): LiveData<IncomeCategory>
+//    @Query("Select * FROM incomeCategory where id = :categoryId")
+//    fun income(categoryId: String): LiveData<IncomeCategory>
 
 
 
-    @Query("DELETE FROM incomeCategory where id = :categoryId")
-    fun deleteIncomeCategory(categoryId: String)
+//    @Query("DELETE FROM incomeCategory where id = :categoryId")
+//    fun deleteIncomeCategory(categoryId: String)
 
-    @Query("SELECT * FROM CategoryListView")
-    fun categoryList(): LiveData<List<CategoryListView>>
+    @Query("SELECT * FROM OperationListView")
+    fun operationList(): LiveData<List<OperationListView>>
+
+    @Insert(onConflict = REPLACE)
+    fun insertOperation(operation: Operation): Long
+
 
 }

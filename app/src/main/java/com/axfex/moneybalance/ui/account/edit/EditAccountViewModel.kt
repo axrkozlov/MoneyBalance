@@ -1,10 +1,8 @@
 package com.axfex.moneybalance.ui.account.edit
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel;
 import com.axfex.moneybalance.data.source.Repository
 import com.axfex.moneybalance.domain.model.account.Account
-import com.axfex.moneybalance.domain.model.account.CreditAccount
 import com.axfex.moneybalance.utils.FreshMutableLiveData
 import kotlinx.coroutines.*
 import java.math.BigDecimal
@@ -24,7 +22,7 @@ class EditAccountViewModel(val repo: Repository) : ViewModel(), CoroutineScope {
 
     val messageEvent = FreshMutableLiveData<Message>()
 
-    fun account(accountId: String) = repo.creditAccount(accountId)
+    fun account(accountId: String) = repo.account(accountId)
 
     fun saveAccount(
         name: String,
@@ -40,35 +38,29 @@ class EditAccountViewModel(val repo: Repository) : ViewModel(), CoroutineScope {
         }
 
         val accountId = id ?: UUID.randomUUID().toString()
-        val account = CreditAccount(
+        val account = Account(
             accountId,
             name,
             iconName,
             color,
             amount
         )
-        insertCreditAccount(account)
+        insertAccount(account)
 
 
         return true
     }
 
     fun deleteAccount(accountId: String) {
-        deleteCreditAccount(accountId)
-
-    }
-
-
-    private fun insertCreditAccount(account: CreditAccount) {
         launch(Dispatchers.IO) {
-            repo.insertCreditAccount(account)
+            repo.deleteAccount(accountId)
         }
     }
 
 
-    private fun deleteCreditAccount(accountId: String) {
+    private fun insertAccount(account: Account) {
         launch(Dispatchers.IO) {
-            repo.deleteCreditAccount(accountId)
+            repo.insertAccount(account)
         }
     }
 

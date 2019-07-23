@@ -5,8 +5,6 @@ import androidx.lifecycle.ViewModel;
 import com.axfex.moneybalance.data.source.Repository
 import com.axfex.moneybalance.domain.model.category.Category
 import com.axfex.moneybalance.domain.model.category.CategoryType
-import com.axfex.moneybalance.domain.model.category.ExpenseCategory
-import com.axfex.moneybalance.domain.model.category.IncomeCategory
 import com.axfex.moneybalance.utils.FreshMutableLiveData
 import kotlinx.coroutines.*
 import java.util.*
@@ -25,16 +23,16 @@ class EditCategoryViewModel(val repo: Repository) : ViewModel(), CoroutineScope 
 
     val messageEvent = FreshMutableLiveData<Message>()
 
-    fun category(categoryId: String, type: CategoryType):LiveData<out Category>? {
+    fun category(categoryId: String, type: CategoryType): LiveData<out Category>? {
         return when (type) {
-            CategoryType.EXPENSE_CATEGORY -> expenseCategory(categoryId)
-            CategoryType.INCOME_CATEGORY -> incomeCategory(categoryId)
+            CategoryType.EXPENSE_CATEGORY -> category(categoryId)
+            CategoryType.INCOME_CATEGORY -> category(categoryId)
         }
     }
 
     fun saveCategory(
         name: String,
-        iconName:String,
+        iconName: String,
         color: Int,
         type: CategoryType,
         id: String? = null
@@ -47,66 +45,34 @@ class EditCategoryViewModel(val repo: Repository) : ViewModel(), CoroutineScope 
 
         val categoryId = id ?: UUID.randomUUID().toString()
 
-        when (type) {
-            CategoryType.EXPENSE_CATEGORY -> {
-                val category = ExpenseCategory(
-                    categoryId,
-                    name,
-                    iconName,
-                    color,
-                    CategoryType.EXPENSE_CATEGORY
-                )
-                insertExpenseCategory(category)
-            }
-            CategoryType.INCOME_CATEGORY -> {
-                val category = IncomeCategory(
-                    categoryId,
-                    name,
-                    iconName,
-                    color,
-                    CategoryType.INCOME_CATEGORY
-                )
-                insertIncomeCategory(category)
-            }
-        }
+        val category = Category(
+            categoryId,
+            name,
+            iconName,
+            color,
+            type
+        )
+
+        insertCategory(category)
 
         return true
     }
 
     fun deleteCategory(categoryId: String, type: CategoryType) {
-        when (type) {
-            CategoryType.EXPENSE_CATEGORY -> deleteExpenseCategory(categoryId)
-            CategoryType.INCOME_CATEGORY -> deleteIncomeCategory(categoryId)
-        }
-    }
-
-    private fun expenseCategory(categoryId: String) = repo.expenseCategory(categoryId)
-    private fun incomeCategory(categoryId: String) = repo.incomeCategory(categoryId)
-
-    private fun insertExpenseCategory(category: ExpenseCategory) {
         launch(Dispatchers.IO) {
-            repo.insertExpenseCategory(category)
+            repo.deleteCategory(categoryId)
         }
     }
 
-    private fun insertIncomeCategory(category: IncomeCategory) {
+    private fun category(categoryId: String) = repo.category(categoryId)
+
+    private fun insertCategory(category: Category) {
         launch(Dispatchers.IO) {
-            repo.insertIncomeCategory(category)
+            repo.insertCategory(category)
         }
     }
 
 
-    private fun deleteExpenseCategory (categoryId: String) {
-        launch(Dispatchers.IO) {
-            repo.deleteExpenseCategory(categoryId)
-        }
-    }
-
-    private fun deleteIncomeCategory (categoryId: String) {
-        launch(Dispatchers.IO) {
-            repo.deleteIncomeCategory(categoryId)
-        }
-    }
 
     @ExperimentalCoroutinesApi
     override fun onCleared() {

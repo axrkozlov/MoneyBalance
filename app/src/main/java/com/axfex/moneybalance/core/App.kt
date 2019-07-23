@@ -27,7 +27,7 @@ class App:Application(), HasSupportFragmentInjector, HasActivityInjector {
     @Inject
     lateinit var activityInjector: DispatchingAndroidInjector<Activity>
 
-    private val FIRST_START_COMPLETE_KEY = "ONBOARDING_COMPLETE_KEY"
+    private val FIRST_START_COMPLETE_KEY = "FIRST_START_COMPLETE"
 
     private val globalPrefs:SharedPreferences by lazy {getSharedPreferences("GlobalPrefs", Context.MODE_PRIVATE)}
 

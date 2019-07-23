@@ -8,12 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.axfex.moneybalance.R
 import com.axfex.moneybalance.core.AppChoiceDialogFragment
 import com.axfex.moneybalance.domain.model.category.CategoryType
+import com.axfex.moneybalance.ui.category.edit.EditCategoryFragmentArgs
 import com.axfex.moneybalance.ui.main.MainViewModel
 import com.axfex.moneybalance.utils.addKeyboardEventListener
 import com.axfex.moneybalance.utils.subscribe
@@ -32,6 +34,9 @@ class CategoryDialogFragment : AppChoiceDialogFragment() {
     private val animationHandler = Handler()
     var animator: ValueAnimator? = null
 
+    private val args: CategoryDialogFragmentArgs by navArgs()
+    private val categoryType: CategoryType by lazy { args.categoryType }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,24 +48,14 @@ class CategoryDialogFragment : AppChoiceDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         setupUI()
         observe()
-
-
-
-
-
-
     }
 
     private fun observe() {
-        viewModel.expenseCategoryList().subscribe(this){ list ->
-//            val expenseCategoryList=list.filter{
-//                it.type== CategoryType.EXPENSE_CATEGORY
-//            }
-            adapter.submitList(list)
-//            val incomeCategoryList=list.filter{
-//                it.type== CategoryType.INCOME_CATEGORY
-//            }
-//            adapter.incomeAdapter.submitList(incomeCategoryList)
+        viewModel.categoryList().subscribe(this){ list ->
+            val categoryList=list.filter{
+                it.type== categoryType
+            }
+            adapter.submitList(categoryList)
 
         }
     }

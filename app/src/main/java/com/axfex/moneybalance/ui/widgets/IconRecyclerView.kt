@@ -79,9 +79,9 @@ class IconRecyclerView(
     }
 
 //    fun select(position: Int) {
-//        adapter?.notifyItemChanged(selectedIconName, "payload $selectedIconName")
+//        listAdapter?.notifyItemChanged(selectedIconName, "payload $selectedIconName")
 //        selectedIconName = position
-//        adapter?.notifyItemChanged(selectedIconName, "payload $selectedIconName")
+//        listAdapter?.notifyItemChanged(selectedIconName, "payload $selectedIconName")
 //
 //        if (
 //            (layoutManager as GridLayoutManager).findFirstCompletelyVisibleItemPosition()>position ||

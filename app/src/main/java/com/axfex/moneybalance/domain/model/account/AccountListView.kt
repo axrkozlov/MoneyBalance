@@ -5,7 +5,7 @@ import com.axfex.moneybalance.domain.converters.MoneyTypeConverter
 import java.math.BigDecimal
 
 @TypeConverters(MoneyTypeConverter::class)
-@DatabaseView("SELECT * FROM creditAccount")
+@DatabaseView("SELECT * FROM account")
 data class AccountListView(
     val id: String,
     val name: String,

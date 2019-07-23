@@ -36,4 +36,7 @@
     <string name="categoryListPageExpenceCategories">expence</string>
     <string name="categoryListPageIncomeCategories">income</string>
     <string name="menu_accounts">Accounts</string>
+    <string name="editOperationEmptyAccount">Account can\'t be empty</string>
+    <string name="editOperationEmptyAmount">Amount can\'t be empty</string>
+    <string name="editOperationEmptyCategory">Please, pick a category</string>
 </resources>

@@ -6,8 +6,8 @@ import com.axfex.moneybalance.core.AppViewModelFactory
 import com.axfex.moneybalance.ui.account.dialog.AccountDialogModule
 import com.axfex.moneybalance.ui.account.edit.EditAccountModule
 import com.axfex.moneybalance.ui.account.list.AccountListModule
-import com.axfex.moneybalance.ui.add_operation.AddOperationModule
-import com.axfex.moneybalance.ui.balance.BalanceModule
+import com.axfex.moneybalance.ui.operation.edit.EditOperationModule
+import com.axfex.moneybalance.ui.operation.list.OperationListModule
 import com.axfex.moneybalance.ui.category.list.CategoryListModule
 import com.axfex.moneybalance.ui.category.dialog.CategoryDialogModule
 import com.axfex.moneybalance.ui.category.edit.EditCategoryModule
@@ -29,8 +29,8 @@ import javax.inject.Provider
         SignInModule::class,
         WelcomeModule::class,
         ReadyModule::class,
-        BalanceModule::class,
-        AddOperationModule::class,
+        OperationListModule::class,
+        EditOperationModule::class,
         ProfileModule::class,
         CategoryListModule::class,
         EditCategoryModule::class,

@@ -63,9 +63,6 @@ class EditCategoryFragment : AppFragment() {
                 colorAdapter.selectByColor(it.color)
             }
 
-//        else render(null)
-
-
         viewModel.iconList.subscribe(this) {
             iconAdapter.submitList(it)
 
@@ -82,18 +79,11 @@ class EditCategoryFragment : AppFragment() {
             selectionView = selectionView
         )
 
-//        iconAdapter.selectionEvent.subscribe(this){ name->
-//            categoryIconPreview.setImageDrawable( viewModel.getIconDrawable(name))
-//            Log.i("EditCategoryFragment", "setupUI: $name")
-//        }
-
         iconAdapter.setSelectionChangeCallback { name ->
             categoryIcon.setImageDrawable(
                 viewModel.getIconDrawable(name)
 
             )
-            Log.i("EditCategoryFragment", "setupUI: $name")
-
         }
 
         val leftArrow = resources.getDrawable(R.drawable.color_recyclerview_left_arrow, null)
@@ -103,24 +93,6 @@ class EditCategoryFragment : AppFragment() {
             endArrow = rightArrow
         )
     }
-
-
-//    private fun render(category: Category?) {
-//
-//        var iconPosition: Int? = null
-//        var colorPosition: Int? = null
-//
-//        category?.let {
-//
-//            colorPosition = viewModel.findColorPosition(category.color)
-//
-//        }
-//
-//
-//
-//
-//    }
-
 
     private fun showMessage(message: EditCategoryViewModel.Message) {
         when (message) {

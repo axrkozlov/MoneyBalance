@@ -4,8 +4,7 @@ import androidx.room.*
 import com.axfex.moneybalance.domain.converters.CategoryTypeConverter
 
 @TypeConverters(CategoryTypeConverter::class)
-@DatabaseView("SELECT * FROM expenseCategory " +
-        "UNION SELECT * FROM incomeCategory")
+@DatabaseView("SELECT * FROM category")
 data class CategoryListView(
     val id: String,
     val name: String,

@@ -1,32 +1,34 @@
 package com.axfex.moneybalance.domain.model.account
 
-
+import androidx.room.*
+import com.axfex.moneybalance.domain.converters.MoneyTypeConverter
 import com.axfex.moneybalance.domain.model.currency.Currency
-
+import com.axfex.moneybalance.domain.model.icon.Icon
 import java.math.BigDecimal
+import java.util.*
+import kotlin.collections.HashSet
 
-
-
-abstract class Account(
-
-    open val id: String,
-    open val name: String,
-    open val iconName: String,
-    open val color: Int,
-    open val owner: String,
-    open val balance: BigDecimal,
-    open val currency: Currency
+@TypeConverters(MoneyTypeConverter::class)
+@Entity(
+    tableName = "account",
+    foreignKeys = [
+        ForeignKey(
+            entity = Icon::class,
+            parentColumns = ["name"],
+            childColumns = ["iconName"],
+            onDelete = ForeignKey.NO_ACTION
+        )
+    ],
+    indices = [Index("iconName")]
 )
-
-//{
-//    constructor(
-//        id: UUID,
-//        name: String,
-//        incomeCategory: AccountCategory,
-//        owner: String,
-//        balance: Amount,
-//        currencies: HashSet<Currency>,
-//        creationDate: Date
-//    ) :
-//            this(id, name, incomeCategory, owner, balance, currencies.first(), creationDate)
-//}
+class Account(
+    @PrimaryKey
+    val id: String,
+    val name: String,
+    val iconName: String,
+    val color: Int,
+//    val owner: String,
+    val balance: BigDecimal
+//    val limit: BigDecimal
+//    val currency: Currency
+)

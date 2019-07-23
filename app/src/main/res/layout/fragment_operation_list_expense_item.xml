@@ -11,14 +11,17 @@
         android:layout_marginBottom="0dp"
         android:padding="8dp"
         android:background="#98495BB3"
-        tools:context=".ui.balance.BalanceFragment">
+        tools:context=".ui.operation.list.OperationListFragment">
 
         <ImageView
             android:id="@+id/categoryIcon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1"
+
             android:layout_marginStart="8dp"
-            android:background="@drawable/balance_expence_item_category_icon_bg"
+            android:padding="6dp"
+            android:background="@drawable/operation_list_expense_item_category_icon_bg"
             android:src="@android:drawable/ic_menu_view"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +32,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginEnd="8dp"
-            android:src="@drawable/balance_expence_item_amount_frame"
+            android:src="@drawable/operation_list_expense_item_amount_frame"
             app:layout_constraintBottom_toBottomOf="@+id/amount"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/amount"
@@ -64,8 +67,8 @@
             android:id="@+id/lineContent"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/balance_expence_item_category_icon_bg"
-            android:src="@drawable/balance_expence_item_line"
+            android:background="@drawable/operation_list_expense_item_category_icon_bg"
+            android:src="@drawable/operation_list_expense_item_line"
             app:layout_constraintBottom_toBottomOf="@+id/categoryIcon"
             app:layout_constraintEnd_toStartOf="@+id/amountFrame"
             app:layout_constraintStart_toEndOf="@+id/categoryIcon"

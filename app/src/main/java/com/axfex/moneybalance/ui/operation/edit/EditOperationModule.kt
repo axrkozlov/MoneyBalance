@@ -1,4 +1,4 @@
-package com.axfex.moneybalance.ui.add_operation
+package com.axfex.moneybalance.ui.operation.edit
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -14,34 +14,35 @@ import dagger.multibindings.IntoMap
 
 @Module(
     includes = [
-        AddOperationModule.ProvideViewModel::class
+        EditOperationModule.ProvideViewModel::class
     ]
 )
-abstract class AddOperationModule {
+abstract class EditOperationModule {
 
 
     @ContributesAndroidInjector(
         modules = [InjectViewModel::class]
     )
-    abstract fun bind(): AddOperationFragment
+    abstract fun bind(): EditOperationFragment
 
     @Module
     class ProvideViewModel {
         @Provides
         @IntoMap
-        @ViewModelKey(AddOperationViewModel::class)
-        fun provideViewModel(repo: Repository): ViewModel = AddOperationViewModel(repo)
+        @ViewModelKey(EditOperationViewModel::class)
+        fun provideViewModel(repo: Repository): ViewModel =
+            EditOperationViewModel(repo)
     }
 
     @Module
     class InjectViewModel {
 
         @Provides
-        fun provideViewModel(factory: ViewModelProvider.Factory, target: AddOperationFragment) =
-            ViewModelProviders.of(target, factory).get(AddOperationViewModel::class.java)
+        fun provideViewModel(factory: ViewModelProvider.Factory, target: EditOperationFragment) =
+            ViewModelProviders.of(target, factory).get(EditOperationViewModel::class.java)
 
         @Provides
-        fun provideMainViewModel(target: AddOperationFragment) = target.activity?.run {
+        fun provideMainViewModel(target: EditOperationFragment) = target.activity?.run {
             ViewModelProviders.of(this)[MainViewModel::class.java]
         } ?: throw Exception("Invalid Activity")
     }

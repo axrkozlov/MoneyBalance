@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.balance.BalanceFragment"
-    android:background="@drawable/balance_bg">
+    tools:context=".ui.operation.list.OperationListFragment"
+    android:background="@drawable/operation_list_bg"
+android:id="@+id/operationListRootView">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,7 +27,7 @@
             app:elevation="12dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/operations"
+            android:id="@+id/operationsRecycler"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -38,51 +39,51 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/fragment_balance_expense_item"/>
+            tools:listitem="@layout/fragment_operation_list_expense_item"/>
 
         <ImageView
             android:id="@+id/line1"
             android:layout_width="match_parent"
             android:layout_height="3dp"
             android:layout_marginBottom="20dp"
-            android:src="@drawable/balance_summary_line"
-            app:layout_constraintBottom_toTopOf="@id/expense" />
+            android:src="@drawable/operation_list_summary_line"
+            app:layout_constraintBottom_toTopOf="@id/balance" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/addIncome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/balance_add"
+            android:src="@drawable/operation_list_add"
             app:backgroundTint="#4CC54C"
             android:background="@null"
             app:elevation="0dp"
             app:fabSize="mini"
             app:layout_constraintBottom_toBottomOf="@id/line1"
-            app:layout_constraintEnd_toEndOf="@+id/income"
-            app:layout_constraintStart_toStartOf="@+id/income"
+            app:layout_constraintEnd_toEndOf="@+id/totalIncomes"
+            app:layout_constraintStart_toStartOf="@+id/totalIncomes"
             app:layout_constraintTop_toTopOf="@id/line1" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/addExpense"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/balance_add"
+            android:src="@drawable/operation_list_add"
             app:backgroundTint="#E05642"
             android:background="@null"
             app:elevation="0dp"
             app:fabSize="mini"
             app:layout_constraintBottom_toBottomOf="@+id/line1"
-            app:layout_constraintEnd_toEndOf="@+id/transfer"
-            app:layout_constraintStart_toStartOf="@+id/transfer"
+            app:layout_constraintEnd_toEndOf="@+id/totalExpenses"
+            app:layout_constraintStart_toStartOf="@+id/totalExpenses"
             app:layout_constraintTop_toBottomOf="@+id/line1" />
 
         <TextView
-            android:id="@+id/income"
+            android:id="@+id/totalIncomes"
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:background="@drawable/balance_summary_income_bg"
+            android:background="@drawable/operation_list_summary_income_bg"
             android:text="450.000$"
             android:ellipsize="end"
             android:gravity="center"
@@ -92,17 +93,17 @@
             app:autoSizeMaxTextSize="18sp"
             app:autoSizeStepGranularity="1sp"
             app:autoSizeTextType="uniform"
-            app:layout_constraintBottom_toBottomOf="@+id/expense"
-            app:layout_constraintEnd_toStartOf="@+id/expense"
+            app:layout_constraintBottom_toBottomOf="@+id/balance"
+            app:layout_constraintEnd_toStartOf="@+id/balance"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/expense"
+            android:id="@+id/balance"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/balance_summary_aviable_bg"
-            android:text="+2.4т"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/operation_list_summary_aviable_bg"
+            android:text="2004т"
             android:ellipsize="end"
             android:gravity="center"
             android:maxLines="1"
@@ -112,18 +113,18 @@
             app:autoSizeStepGranularity="1sp"
             app:autoSizeTextType="uniform"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/transfer"
-            app:layout_constraintStart_toEndOf="@+id/income"
+            app:layout_constraintEnd_toStartOf="@+id/totalExpenses"
+            app:layout_constraintStart_toEndOf="@+id/totalIncomes"
             />
 
         <TextView
-            android:id="@+id/transfer"
+            android:id="@+id/totalExpenses"
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:background="@drawable/balance_summary_expense_bg"
-            android:text="4.70000000000$"
+            android:background="@drawable/operation_list_summary_expense_bg"
+            android:text="0$"
             android:ellipsize="end"
             android:gravity="center"
             android:maxLines="1"
@@ -132,10 +133,30 @@
             app:autoSizeMaxTextSize="18sp"
             app:autoSizeStepGranularity="1sp"
             app:autoSizeTextType="uniform"
-            app:layout_constraintBottom_toBottomOf="@+id/expense"
+            app:layout_constraintBottom_toBottomOf="@+id/balance"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/expense" />
+            app:layout_constraintStart_toEndOf="@+id/balance" />
 
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:text="Total"
+                  app:layout_constraintTop_toBottomOf="@id/line1"
+                  app:layout_constraintEnd_toEndOf="@+id/balance"
+                  app:layout_constraintStart_toStartOf="@+id/balance"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:text="incomes"
+                  app:layout_constraintTop_toBottomOf="@id/totalIncomes"
+                  app:layout_constraintStart_toStartOf="@+id/totalIncomes" app:layout_constraintEnd_toEndOf="@+id/totalIncomes"
+                  android:id="@+id/textView3"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:text="balance"
+                  app:layout_constraintTop_toBottomOf="@id/totalIncomes"
+                  app:layout_constraintStart_toStartOf="@+id/balance" app:layout_constraintEnd_toEndOf="@+id/balance"
+                  android:layout_marginStart="8dp" android:id="@+id/textView5"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:text="expences"
+                  app:layout_constraintTop_toBottomOf="@id/totalIncomes"
+                  app:layout_constraintStart_toStartOf="@+id/totalExpenses" app:layout_constraintEnd_toEndOf="@+id/totalExpenses"
+                  android:layout_marginStart="8dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

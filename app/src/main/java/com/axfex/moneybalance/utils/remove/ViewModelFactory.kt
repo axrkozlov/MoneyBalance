@@ -6,7 +6,7 @@ package com.axfex.moneybalance.utils.remove
 //import androidx.lifecycle.ViewModelProvider
 //import com.axfex.moneybalance.domain.model.auth.UserManager
 //import com.axfex.moneybalance.ui.profile.ProfileViewModel
-//import com.axfex.moneybalance.ui.balance.BalanceViewModel
+//import com.axfex.moneybalance.ui.balance.OperationListViewModel
 //import com.axfex.moneybalance.ui.start.signin.SignInViewModel
 //import com.axfex.moneybalance.ui.start.signin.ReadyViewModel
 //import com.axfex.moneybalance.ui.start.splash.SplashViewModel
