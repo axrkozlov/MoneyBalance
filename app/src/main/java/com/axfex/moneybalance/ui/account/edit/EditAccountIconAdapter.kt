@@ -41,7 +41,8 @@ class EditAccountIconAdapter(val viewModel: EditAccountViewModel) :
         if (position < 0 || position >= itemCount) return false
 
         selectedIconName = getItem(position).name
-        selectionCallback?.let { it(getItem(position).name) }
+        selectionCallback?.run {
+            getItem(position).name  }
         val previous = selectedPosition
         selectedPosition = position
         notifyItemChanged(previous, "payload $previous")

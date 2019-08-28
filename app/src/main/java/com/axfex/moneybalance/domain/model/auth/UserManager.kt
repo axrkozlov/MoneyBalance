@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.axfex.moneybalance.data.source.local.UserPrefs
 import com.axfex.moneybalance.domain.model.auth.User.*
 import com.google.firebase.auth.*
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
@@ -28,6 +29,7 @@ class UserManager(private val userPrefs: UserPrefs) {
 
     suspend fun signIn(email: String, password: String) = suspendCoroutine<SignInResult> { cont ->
         val credentials = EmailAuthProvider.getCredential(email, password)
+
         auth.signInWithCredential(credentials).addOnCompleteListener { result ->
             when {
                 result.isSuccessful -> {
@@ -47,7 +49,15 @@ class UserManager(private val userPrefs: UserPrefs) {
                 }
             }
         }
+        auth.currentUser?.getIdToken(true)?.addOnSuccessListener { token ->
+            Log.i("UserManager", "signIn (line 52): ${token.token.toString()}}")
+
+        }
+
+
     }
+
+    fun getUser()= auth.currentUser
 
     suspend fun signInAnonimously() = suspendCoroutine<SignInResult> { cont ->
         auth.signInAnonymously().addOnCompleteListener { result ->

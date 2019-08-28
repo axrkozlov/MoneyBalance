@@ -87,25 +87,25 @@ class ColorRecyclerView(
     private fun setupArrows() {
         val firstView = layoutManager?.findViewByPosition(0)
         val endView = layoutManager?.findViewByPosition(adapter!!.itemCount - 1)
-        startArrow?.let {
-            it.setBounds(0, (height * 0.2).toInt(), (height * 0.8).toInt(), (height * 0.8).toInt())
+        startArrow?.run {
+            setBounds(0, (height * 0.2).toInt(), (height * 0.8).toInt(), (height * 0.8).toInt())
             if (firstView == null) {
-                it.alpha = 0
+                alpha = 0
 
             } else {
                 val offset = firstView.left
                 val offsetPercent = max(0.0, offset.toDouble() / (width / 2))
-                it.alpha = min(255, (255 * offsetPercent).toInt())
+                alpha = min(255, (255 * offsetPercent).toInt())
             }
         }
-        endArrow?.let {
-            it.setBounds((width - 0.8 * height).toInt(), (height * 0.2).toInt(), width, (height * 0.8).toInt())
+        endArrow?.run {
+            setBounds((width - 0.8 * height).toInt(), (height * 0.2).toInt(), width, (height * 0.8).toInt())
             if (endView == null) {
-                it.alpha = 0
+                alpha = 0
             } else {
                 val offset = width - endView.right
                 val offsetPercent = max(0.0, offset.toDouble() / (width / 2))
-                it.alpha = min(255, (255 * offsetPercent).toInt())
+                alpha = min(255, (255 * offsetPercent).toInt())
 
             }
         }

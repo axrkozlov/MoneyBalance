@@ -3,6 +3,7 @@ package com.axfex.moneybalance.data.source.local.dao
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import androidx.room.OnConflictStrategy.REPLACE
+import com.axfex.moneybalance.domain.model.account.Account
 import com.axfex.moneybalance.domain.model.category.*
 
 @Dao
@@ -14,6 +15,8 @@ interface CategoriesDao{
     @Query("Select * FROM category where id = :categoryId")
     fun category(categoryId: String): LiveData<Category>
 
+    @Query("Select * FROM category limit 1")
+    fun getOneCategory(): Category
 
     @Insert(onConflict = REPLACE)
     fun insertCategory(vararg category: Category)

@@ -96,15 +96,15 @@ class CategoryDialogFragment : AppChoiceDialogFragment() {
             val lp = LinearLayout.LayoutParams(categoryDialogRecycler.layoutParams)
             animator?.cancel()
             animator = ValueAnimator.ofInt(lp.height, endHeight)
-            animator?.let {
-                it.addUpdateListener { animation ->
+            animator?.run {
+                addUpdateListener { animation ->
                     lp.height = animation.animatedValue as Int
                     categoryDialogRecycler.layoutParams = lp
 
                 }
-                it.duration = 150
-                it.startDelay = 50L
-                it.start()
+                duration = 150
+                startDelay = 50L
+                start()
             }
 
         }, 50)

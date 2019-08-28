@@ -8,4 +8,6 @@ class ProfileViewModel(val userManager: UserManager) : ViewModel() {
     fun logOut(){
         userManager.logout()
     }
+
+    fun user()=userManager.getUser()
 }

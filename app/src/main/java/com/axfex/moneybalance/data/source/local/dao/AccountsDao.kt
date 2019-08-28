@@ -15,6 +15,11 @@ interface AccountsDao{
     @Query("Select * FROM account where id = :accountId")
     fun account(accountId: String): LiveData<Account>
 
+    @Query("Select * FROM account limit 1")
+    fun getOneAccount(): Account
+
+
+
 
     @Insert(onConflict = REPLACE)
     fun insertAccount(vararg account: Account)

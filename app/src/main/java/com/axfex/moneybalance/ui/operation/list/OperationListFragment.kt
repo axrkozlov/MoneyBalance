@@ -9,6 +9,8 @@ import androidx.navigation.fragment.findNavController
 import com.axfex.moneybalance.R
 import com.axfex.moneybalance.core.AppFragment
 import com.axfex.moneybalance.domain.model.operation.OperationType
+import com.axfex.moneybalance.ui.category.dialog.CategoryDialogFragmentDirections
+import com.axfex.moneybalance.ui.operation.edit.EditOperationFragmentDirections
 import com.axfex.moneybalance.utils.format
 import com.axfex.moneybalance.utils.subscribe
 import kotlinx.android.synthetic.main.fragment_operation_list.*
@@ -60,11 +62,18 @@ class OperationListFragment : AppFragment() {
         operationsRecycler.adapter= adapter
 
         addExpense.setOnClickListener{
-            findNavController().navigate(R.id.action_to_addOperationFragment)
+            val direction =
+                EditOperationFragmentDirections.actionToAddOperationFragment(OperationType.EXPENSE)
+//
+            findNavController().navigate(direction)
+//            findNavController().navigate(R.id.action_to_addOperationFragment)
         }
 
         addIncome.setOnClickListener{
-            findNavController().navigate(R.id.action_to_addOperationFragment)
+            val direction =
+                EditOperationFragmentDirections.actionToAddOperationFragment(OperationType.INCOME)
+            findNavController().navigate(direction)
+//            findNavController().navigate(R.id.action_to_addOperationFragment)
         }
     }
 

@@ -96,7 +96,10 @@
         android:id="@+id/addOperationFragment"
         android:name="com.axfex.moneybalance.ui.operation.edit.EditOperationFragment"
         android:label="@string/addOperationFragmentLabel"
-        tools:layout="@layout/fragment_edit_operation" />
+        tools:layout="@layout/fragment_edit_operation" >
+        <argument android:name="operationType" app:argType="com.axfex.moneybalance.domain.model.operation.OperationType"
+                  android:defaultValue="EXPENSE"/>
+    </fragment>
     <fragment
         android:id="@+id/categoryListFragment"
         android:name="com.axfex.moneybalance.ui.category.list.CategoryListFragment"

@@ -1,6 +1,8 @@
 package com.axfex.moneybalance.data.source.local.dao
 
 import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
+import androidx.paging.PagedList
 import androidx.room.*
 import androidx.room.OnConflictStrategy.REPLACE
 import com.axfex.moneybalance.domain.model.operation.Operation
@@ -47,8 +49,11 @@ interface OperationsDao{
     @Query("SELECT * FROM OperationListView")
     fun operationList(): LiveData<List<OperationListView>>
 
+    @Query("SELECT * FROM OperationListView")
+    fun operationPagedList(): DataSource.Factory<Int, OperationListView>
+
     @Insert(onConflict = REPLACE)
-    fun insertOperation(operation: Operation): Long
+    fun insertOperation(vararg operation: Operation)
 
 
 }

@@ -49,6 +49,7 @@ class StartActivity : AppCompatActivity() {
             page1.isActivated=false
             page2.isActivated=false
             page3.isActivated=false
+
             when (destination) {
                 navController.graph[R.id.splashFragment] -> {
                 }

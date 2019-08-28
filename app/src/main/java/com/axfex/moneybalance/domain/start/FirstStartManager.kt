@@ -5,6 +5,8 @@ import com.axfex.moneybalance.domain.model.account.Account
 import com.axfex.moneybalance.domain.model.category.CategoryType
 import com.axfex.moneybalance.domain.model.category.Category
 import com.axfex.moneybalance.domain.model.icon.IconsManager
+import com.axfex.moneybalance.domain.model.operation.Operation
+import com.axfex.moneybalance.domain.model.operation.OperationType
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -18,6 +20,7 @@ class FirstStartManager(val iconsManager: IconsManager, val lds: LocalDataSource
             populateIcons()
             populateCategories()
             populateAccounts()
+            populateOperations()
         }
 
     }
@@ -215,6 +218,33 @@ class FirstStartManager(val iconsManager: IconsManager, val lds: LocalDataSource
         accounts.add(account)
 
         lds.insertAccount(*accounts.toTypedArray())
+    }
+
+    private fun populateOperations(){
+        val operations=ArrayList<Operation>()
+
+        var accountId = lds.getOneAccount().id
+        var categoryId = lds.getOneCategory().id
+        val note="Payment"
+        val operationType=OperationType.EXPENSE
+
+        for (i in 1..10000) {
+            var id = UUID.randomUUID().toString()
+            val amount=BigDecimal(i)
+
+            var operation = Operation(
+                id,
+                accountId,
+                amount,
+                note,
+                categoryId,
+                operationType
+            )
+            operations.add(operation)
+
+        }
+
+        lds.insertOperation(*operations.toTypedArray())
     }
 
 

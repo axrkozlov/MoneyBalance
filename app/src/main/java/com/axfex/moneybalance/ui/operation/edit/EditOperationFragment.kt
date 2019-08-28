@@ -7,11 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.transition.*
 import com.axfex.moneybalance.R
 import com.axfex.moneybalance.core.AppFragment
 import com.axfex.moneybalance.domain.model.category.CategoryType
 import com.axfex.moneybalance.domain.model.operation.OperationType
+import com.axfex.moneybalance.ui.category.dialog.CategoryDialogFragmentArgs
 import com.axfex.moneybalance.ui.category.dialog.CategoryDialogFragmentDirections
 import com.axfex.moneybalance.ui.main.MainViewModel
 import com.axfex.moneybalance.utils.hideKeyboard
@@ -34,6 +36,8 @@ class EditOperationFragment : AppFragment() {
     var accountId:String?=null
     var categoryId:String?=null
 
+    private val args: EditOperationFragmentArgs by navArgs()
+    private val operationType: OperationType by lazy { args.operationType }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,6 +48,7 @@ class EditOperationFragment : AppFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        viewModel.operationTypeEvent.setValue(operationType)
 
         categoryLayout.setOnClickListener{
             val categoryType= when (viewModel.operationTypeEvent.value){

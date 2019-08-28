@@ -26,7 +26,9 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
-
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
     }
 }
 
@@ -52,7 +54,7 @@ dependencies {
 
     implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion"
-
+    implementation "androidx.paging:paging-runtime:$paging_version"
     //Dagger
     implementation "com.google.dagger:dagger-android:$dagger_version"
     implementation "com.google.dagger:dagger-android-support:$dagger_version"

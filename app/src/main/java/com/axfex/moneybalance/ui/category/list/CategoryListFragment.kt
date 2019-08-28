@@ -1,6 +1,7 @@
 package com.axfex.moneybalance.ui.category.list
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.navigation.fragment.findNavController
 import com.axfex.moneybalance.R
@@ -47,7 +48,7 @@ class CategoryListFragment : AppFragment() {
             adapter.incomeAdapter.submitList(incomeCategoryList)
 
         }
-
+Log.i("CategoryListFragment", "onViewCreated (line 51): ")
         categoryListPager.adapter= adapter
         tablayout.setupWithViewPager(categoryListPager)
 

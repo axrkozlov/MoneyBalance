@@ -37,6 +37,7 @@ class IconsManager(val context: Context) {
                 icons.add(icon)
             }
 
+
         } catch (e: IOException) {
             Log.e("IconsManager", "loadIcons: ", e)
         }
